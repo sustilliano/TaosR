@@ -1,0 +1,29 @@
+id: taos-camera-mcp
+name: IP Camera MCP (Thingino/Cinnado)
+type: plugin
+version: 0.1.0
+description: "Agent eyes — JPEG snapshots and PTZ control for Thingino-firmware IP cameras (Cinnado D1 and friends)"
+homepage: https://github.com/sustilliano/taosr
+license: AGPL-3.0
+
+requires:
+  ram_mb: 32
+
+install:
+  method: script
+  package: "true"  # ships with the repo under robotics/, stdlib-only
+
+lifecycle:
+  start: ["python3", "robotics/camera_mcp.py"]
+  env:
+    TAOS_CAMERAS_FILE: "data/cameras.json"
+
+hardware_tiers:
+  arm-npu-8gb: full
+  arm-npu-16gb: full
+  arm-npu-32gb: full
+  x86-cuda-8gb: full
+  x86-cuda-12gb: full
+  x86-vulkan-8gb: full
+  cpu-only: full
+  apple-silicon: full

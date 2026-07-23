@@ -1,0 +1,30 @@
+id: tank-fleet-mcp
+name: Tank Fleet MCP
+type: plugin
+version: 0.1.0
+description: "Drive a tank-agents robot fleet (Freenove Pi tanks) — movement, camera pan/tilt, LEDs, autonomy modes, emergency stop"
+homepage: https://github.com/sustilliano/taosr
+license: AGPL-3.0
+
+requires:
+  ram_mb: 32
+
+install:
+  method: script
+  package: "true"  # ships with the repo under robotics/, stdlib-only
+
+lifecycle:
+  start: ["python3", "robotics/tank_fleet_mcp.py"]
+  env:
+    TAOS_TANK_COORDINATOR_URL: "http://localhost:8420"
+    TAOS_TANK_MAX_SPEED: "70"
+
+hardware_tiers:
+  arm-npu-8gb: full
+  arm-npu-16gb: full
+  arm-npu-32gb: full
+  x86-cuda-8gb: full
+  x86-cuda-12gb: full
+  x86-vulkan-8gb: full
+  cpu-only: full
+  apple-silicon: full
