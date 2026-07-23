@@ -1,0 +1,32 @@
+id: pk-trust-mcp
+name: PlaneKey Trust Loop
+type: plugin
+version: 0.1.0
+description: "The planekey work loop as agent tools — baseline/after snapshots, provable diffs, secret scans, and TMrFS artifact memory with lineage"
+homepage: https://github.com/sustilliano/planekey-vse
+license: Proprietary (PlaneKey)
+
+requires:
+  ram_mb: 64
+  # Node.js >= 18 on PATH; toolchain from a planekey-vse checkout
+  # pointed to by PK_VSE_TOOLCHAIN.
+
+install:
+  method: script
+  package: "true"  # ships with the repo under planekey/, shells to node
+
+lifecycle:
+  start: ["python3", "planekey/pk_trust_mcp.py"]
+  env:
+    PK_VSE_TOOLCHAIN: "../planekey-vse/toolchain"
+    PK_WORKSPACE: "~/.taos/pk-workspace"
+
+hardware_tiers:
+  arm-npu-8gb: full
+  arm-npu-16gb: full
+  arm-npu-32gb: full
+  x86-cuda-8gb: full
+  x86-cuda-12gb: full
+  x86-vulkan-8gb: full
+  cpu-only: full
+  apple-silicon: full
