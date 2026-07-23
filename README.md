@@ -2,10 +2,15 @@
   <img src="static/taos-logo.png" alt="taOS" width="400">
 </p>
 
-# taOS
+# taOSr
 
 **Your AI, your hardware, your data.** Self-hosted AI where your agents' memory, conversations, and files live on machines you own, fully offline when you want, cloud only when you choose.
 
+
+> **taOSr fork (2026-07-22).** This is my fork tailoring it to use my tensor memory sytem and adding control of rasberry pi robots to the agents toolbox(coming soon).
+> taOSr is also testing the capabilities of https://github.com/sustilliano/planekey-vse/tree/claude/chat-visual-studio-7n6y77
+> on repo branch overlap matrices and artifact identification of ghost fixes(early implimentations of refinements that didnt get finished, or got combined with other functionalities but left residue, im testing to see if i can turn these soon to be 130 or so branches  [OP](https://github.com/jaylfc)  created during HIS INITIAL development)If you see this im not trying to infringe i just liked what you were doing and had a few things of my own that i thought could improve or be improved with this, so thank you for what youve done.
+ 
 > **Beta (2026-06-02).** This is beta software meant for testers running it on their own hardware, so expect rough edges. The install script, backend, API, memory system (taOSmd), and multi-framework group chat all work; the desktop GUI is wired up for everyday use but a few flows (some agent management, worker connections, model routing) are still being smoothed out. Star or watch the repo to follow progress and catch the next release.
 >
 > **A heads-up on the catalogs:** with 100+ apps, 16 frameworks, and a large model catalog, plenty of install manifests have not been exercised on real hardware yet, so some apps, frameworks, and models will fail to install. If one does, [open an issue](https://github.com/jaylfc/taOS/issues) with the name and the error you saw and I will fix the manifest as soon as I can. These reports are genuinely useful, most manifest fixes ship same-day.
