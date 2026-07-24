@@ -1,0 +1,31 @@
+id: tmrfs-memory
+name: TMrFS Tensor Memory
+type: plugin
+version: 0.1.0
+description: "Tensor-memory tier for agents — store/recall/link decaying 99-D 'thoughts' via the TMrFS bridge, alongside taosmd conversational memory"
+homepage: https://github.com/sustilliano/tmrfs-python
+license: AGPL-3.0
+
+requires:
+  ram_mb: 32
+  # Talks to a running TMrFS HTTP bridge (tmrfs-python web/localai_bridge.py)
+  # at TAOS_TMRFS_URL; the bridge itself is a separate service.
+
+install:
+  method: script
+  package: "true"  # ships with the repo under tmrfs/, stdlib-only
+
+lifecycle:
+  start: ["python3", "tmrfs/tmrfs_memory_mcp.py"]
+  env:
+    TAOS_TMRFS_URL: "http://localhost:8080"
+
+hardware_tiers:
+  arm-npu-8gb: full
+  arm-npu-16gb: full
+  arm-npu-32gb: full
+  x86-cuda-8gb: full
+  x86-cuda-12gb: full
+  x86-vulkan-8gb: full
+  cpu-only: full
+  apple-silicon: full
