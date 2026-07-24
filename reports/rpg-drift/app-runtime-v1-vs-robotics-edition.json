@@ -1,0 +1,420 @@
+{
+  "left_db": "/workspace/taosr/reports/rpg-drift/feat-app-runtime-v1-tinyagentos.sqlite",
+  "right_db": "/workspace/taosr/reports/rpg-drift/robotics-edition-tinyagentos.sqlite",
+  "capabilities_in_left_only": [],
+  "capabilities_in_right_only": [
+    "Asset",
+    "Bean",
+    "Board",
+    "Broker",
+    "Browser",
+    "Code",
+    "Coding",
+    "Contacts",
+    "Council",
+    "Data",
+    "Db",
+    "Decisions",
+    "Design",
+    "Device",
+    "Events",
+    "Feedback",
+    "Governance",
+    "Gpg",
+    "Gpu",
+    "Hub",
+    "Inference",
+    "Lazy",
+    "Library",
+    "License",
+    "Log",
+    "Mail",
+    "Music",
+    "Notes",
+    "Office",
+    "Openclaw",
+    "Opencode",
+    "Otel",
+    "Peer",
+    "Provider",
+    "Providers",
+    "Push",
+    "Receipt",
+    "Receipts",
+    "Rollback",
+    "Store",
+    "Taos",
+    "Taosnet",
+    "Task",
+    "Themes",
+    "Todo",
+    "Video",
+    "Vram",
+    "Web",
+    "Workspace"
+  ],
+  "drift_rows": [
+    {
+      "capability": "Agent",
+      "left_modules": 7,
+      "right_modules": 16,
+      "delta": 9
+    },
+    {
+      "capability": "App",
+      "left_modules": 2,
+      "right_modules": 3,
+      "delta": 1
+    },
+    {
+      "capability": "Asset",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Auth",
+      "left_modules": 2,
+      "right_modules": 7,
+      "delta": 5
+    },
+    {
+      "capability": "Bean",
+      "left_modules": 0,
+      "right_modules": 7,
+      "delta": 7
+    },
+    {
+      "capability": "Board",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Broker",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Browser",
+      "left_modules": 0,
+      "right_modules": 2,
+      "delta": 2
+    },
+    {
+      "capability": "Client",
+      "left_modules": 1,
+      "right_modules": 3,
+      "delta": 2
+    },
+    {
+      "capability": "Code",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Coding",
+      "left_modules": 0,
+      "right_modules": 2,
+      "delta": 2
+    },
+    {
+      "capability": "Contacts",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Council",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Data",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Db",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Decisions",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Design",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Desktop",
+      "left_modules": 2,
+      "right_modules": 3,
+      "delta": 1
+    },
+    {
+      "capability": "Device",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Events",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Feedback",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Framework",
+      "left_modules": 1,
+      "right_modules": 2,
+      "delta": 1
+    },
+    {
+      "capability": "Github",
+      "left_modules": 1,
+      "right_modules": 7,
+      "delta": 6
+    },
+    {
+      "capability": "Governance",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Gpg",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Gpu",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Hub",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Inference",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Installs",
+      "left_modules": 1,
+      "right_modules": 2,
+      "delta": 1
+    },
+    {
+      "capability": "Lazy",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Library",
+      "left_modules": 0,
+      "right_modules": 3,
+      "delta": 3
+    },
+    {
+      "capability": "License",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Litellm",
+      "left_modules": 2,
+      "right_modules": 4,
+      "delta": 2
+    },
+    {
+      "capability": "Log",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Mail",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Music",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Notes",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Notifications",
+      "left_modules": 1,
+      "right_modules": 2,
+      "delta": 1
+    },
+    {
+      "capability": "Office",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Openclaw",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Opencode",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Otel",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Peer",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Provider",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Providers",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Push",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Receipt",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Receipts",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Rollback",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Store",
+      "left_modules": 0,
+      "right_modules": 3,
+      "delta": 3
+    },
+    {
+      "capability": "Taos",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Taosnet",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Task",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Themes",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Todo",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Tooling",
+      "left_modules": 1,
+      "right_modules": 2,
+      "delta": 1
+    },
+    {
+      "capability": "Video",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Vram",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Web",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    },
+    {
+      "capability": "Workspace",
+      "left_modules": 0,
+      "right_modules": 1,
+      "delta": 1
+    }
+  ],
+  "drift_count": 60,
+  "verdict": "drifted"
+}

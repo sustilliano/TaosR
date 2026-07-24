@@ -128,3 +128,6 @@ data/pending-restart.json
 # Stray dev screenshot artifacts
 desktop-initial.png
 venv/
+
+# Regenerable pk-client RPG comparison DBs (bulky)
+reports/rpg-drift/*.sqlite

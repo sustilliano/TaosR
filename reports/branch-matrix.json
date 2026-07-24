@@ -1,0 +1,5706 @@
+{
+  "generated_at": "2026-07-24T07:32:33.581067+00:00",
+  "base": "origin/robotics-edition",
+  "remote": "origin",
+  "branch_count": 197,
+  "resolvable_count": 196,
+  "unresolvable_count": 1,
+  "branches": [
+    {
+      "branch": "feat/app-runtime-v1",
+      "ref": "origin/feat/app-runtime-v1",
+      "kind": "feat",
+      "head_sha": "52ea3330607f",
+      "last_subject": "fix(userspace): harden backend proxy (block ../ + strip headers) and make container re-install idempotent",
+      "last_author": "jaylfc",
+      "last_date": "2026-05-31T01:42:28+01:00",
+      "merge_base": "941cb5a02950",
+      "resolvable": true,
+      "ahead": 21,
+      "behind": 2164,
+      "merged": false,
+      "files_changed": 40,
+      "insertions": 1928,
+      "deletions": 3,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 18
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 15
+        },
+        {
+          "dir": "desktop",
+          "files": 7
+        }
+      ],
+      "absorbed_files": 6,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "release/beta.44",
+      "ref": "origin/release/beta.44",
+      "kind": "release",
+      "head_sha": "4dc957e67735",
+      "last_subject": "chore(release): v1.0.0-beta.44 version bump + changelog",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-22T14:49:15+00:00",
+      "merge_base": "3878ccb400c9",
+      "resolvable": true,
+      "ahead": 10,
+      "behind": 41,
+      "merged": false,
+      "files_changed": 37,
+      "insertions": 3351,
+      "deletions": 45,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 15
+        },
+        {
+          "dir": "desktop",
+          "files": 13
+        },
+        {
+          "dir": "tests",
+          "files": 4
+        },
+        {
+          "dir": "CHANGELOG.md",
+          "files": 1
+        },
+        {
+          "dir": "README.md",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 18,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "dev",
+      "ref": "origin/dev",
+      "kind": "other",
+      "head_sha": "8a8b6cb535e2",
+      "last_subject": "fix(shortcuts): resolve the container's real incus project (and start it) for terminal shortcuts (#2105)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-22T15:46:51+01:00",
+      "merge_base": "3878ccb400c9",
+      "resolvable": true,
+      "ahead": 9,
+      "behind": 41,
+      "merged": false,
+      "files_changed": 32,
+      "insertions": 3321,
+      "deletions": 41,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 14
+        },
+        {
+          "dir": "desktop",
+          "files": 12
+        },
+        {
+          "dir": "tests",
+          "files": 4
+        },
+        {
+          "dir": "README.md",
+          "files": 1
+        },
+        {
+          "dir": "docs",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 18,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/shortcut-pty-project-resolution",
+      "ref": "origin/fix/shortcut-pty-project-resolution",
+      "kind": "fix",
+      "head_sha": "71f766a013b6",
+      "last_subject": "fix(shortcuts): resolve the container's real incus project (and start it) for terminal shortcuts",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-22T14:46:33+00:00",
+      "merge_base": "3878ccb400c9",
+      "resolvable": true,
+      "ahead": 9,
+      "behind": 41,
+      "merged": false,
+      "files_changed": 32,
+      "insertions": 3321,
+      "deletions": 41,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 14
+        },
+        {
+          "dir": "desktop",
+          "files": 12
+        },
+        {
+          "dir": "tests",
+          "files": 4
+        },
+        {
+          "dir": "README.md",
+          "files": 1
+        },
+        {
+          "dir": "docs",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 18,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/assistant-studio-optional-catalog",
+      "ref": "origin/fix/assistant-studio-optional-catalog",
+      "kind": "fix",
+      "head_sha": "fdfcbb3e47c0",
+      "last_subject": "fix(apps): register assistant-studio as an installable optional app",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-22T14:27:03+00:00",
+      "merge_base": "3878ccb400c9",
+      "resolvable": true,
+      "ahead": 8,
+      "behind": 41,
+      "merged": false,
+      "files_changed": 30,
+      "insertions": 3189,
+      "deletions": 39,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 13
+        },
+        {
+          "dir": "desktop",
+          "files": 12
+        },
+        {
+          "dir": "tests",
+          "files": 3
+        },
+        {
+          "dir": "README.md",
+          "files": 1
+        },
+        {
+          "dir": "docs",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 16,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/agent-scope-requests",
+      "ref": "origin/feat/agent-scope-requests",
+      "kind": "feat",
+      "head_sha": "1389f1f4ec3e",
+      "last_subject": "fix(agents): take the per-request lock in deny_scope_request too (#1921)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-22T13:45:53+00:00",
+      "merge_base": "3878ccb400c9",
+      "resolvable": true,
+      "ahead": 8,
+      "behind": 41,
+      "merged": false,
+      "files_changed": 27,
+      "insertions": 2480,
+      "deletions": 38,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 12
+        },
+        {
+          "dir": "desktop",
+          "files": 10
+        },
+        {
+          "dir": "tests",
+          "files": 3
+        },
+        {
+          "dir": "README.md",
+          "files": 1
+        },
+        {
+          "dir": "docs",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 16,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "design/trust-comms-layer",
+      "ref": "origin/design/trust-comms-layer",
+      "kind": "other",
+      "head_sha": "d1efd165cf6d",
+      "last_subject": "docs(spec): trust-comms \u2014 dashboard gating on managed_by + view->app ownership",
+      "last_author": "jaylfc",
+      "last_date": "2026-06-09T17:47:20+01:00",
+      "merge_base": "9578ffbf68eb",
+      "resolvable": true,
+      "ahead": 7,
+      "behind": 2001,
+      "merged": false,
+      "files_changed": 13,
+      "insertions": 2626,
+      "deletions": 153,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 8
+        },
+        {
+          "dir": "tests",
+          "files": 3
+        },
+        {
+          "dir": ".github",
+          "files": 1
+        },
+        {
+          "dir": "docs",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 4,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/assistant-studio",
+      "ref": "origin/feat/assistant-studio",
+      "kind": "feat",
+      "head_sha": "046a40f9f1d4",
+      "last_subject": "feat(desktop): Assistant Studio - a workspace for a personal-assistant agent",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-22T14:14:58+00:00",
+      "merge_base": "3878ccb400c9",
+      "resolvable": true,
+      "ahead": 6,
+      "behind": 41,
+      "merged": false,
+      "files_changed": 25,
+      "insertions": 2104,
+      "deletions": 38,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 12
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 9
+        },
+        {
+          "dir": "tests",
+          "files": 2
+        },
+        {
+          "dir": "README.md",
+          "files": 1
+        },
+        {
+          "dir": "docs",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 12,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "test/gamestudio-backfill",
+      "ref": "origin/test/gamestudio-backfill",
+      "kind": "test",
+      "head_sha": "f9057c95e94b",
+      "last_subject": "test(gamestudio): fold Kilo findings (role-based queries, exact matches, drop dead non-null assertions)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T11:47:02+01:00",
+      "merge_base": "c19e2f7fe5f8",
+      "resolvable": true,
+      "ahead": 6,
+      "behind": 459,
+      "merged": false,
+      "files_changed": 3,
+      "insertions": 164,
+      "deletions": 2,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/gamestudio-ai-maker",
+      "ref": "origin/feat/gamestudio-ai-maker",
+      "kind": "feat",
+      "head_sha": "d8b471f39335",
+      "last_subject": "feat(gamestudio): wire Create/Editor/Library/Share rail; adapt tests; docs",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T21:00:10+01:00",
+      "merge_base": "dd7320d6d144",
+      "resolvable": true,
+      "ahead": 5,
+      "behind": 441,
+      "merged": false,
+      "files_changed": 38,
+      "insertions": 3423,
+      "deletions": 1593,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 34
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        },
+        {
+          "dir": "README.md",
+          "files": 1
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 31,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/provenance-sandbox-tiers",
+      "ref": "origin/feat/provenance-sandbox-tiers",
+      "kind": "feat",
+      "head_sha": "1a29bcb5d8df",
+      "last_subject": "refactor(sandbox): fold Kilo review notes (namespace match, migration commit)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T10:59:16+01:00",
+      "merge_base": "89bc7abd363c",
+      "resolvable": true,
+      "ahead": 5,
+      "behind": 462,
+      "merged": false,
+      "files_changed": 13,
+      "insertions": 870,
+      "deletions": 57,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 6
+        },
+        {
+          "dir": "desktop",
+          "files": 5
+        },
+        {
+          "dir": "tests",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 7,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/video-studio",
+      "ref": "origin/feat/video-studio",
+      "kind": "feat",
+      "head_sha": "88749f90f965",
+      "last_subject": "fix(video-studio): fold Kilo findings (delete rollback, seed validation, download href, timer/preload hygiene)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T11:41:19+01:00",
+      "merge_base": "c19e2f7fe5f8",
+      "resolvable": true,
+      "ahead": 5,
+      "behind": 459,
+      "merged": false,
+      "files_changed": 11,
+      "insertions": 1032,
+      "deletions": 4,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 8
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        },
+        {
+          "dir": "README.md",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 5,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/agent-project-files-access",
+      "ref": "origin/feat/agent-project-files-access",
+      "kind": "feat",
+      "head_sha": "51d6d3537941",
+      "last_subject": "feat(agents): surface Files in the invite bundle + fix agent API-surface docs",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-22T11:30:55+00:00",
+      "merge_base": "3878ccb400c9",
+      "resolvable": true,
+      "ahead": 4,
+      "behind": 41,
+      "merged": false,
+      "files_changed": 15,
+      "insertions": 563,
+      "deletions": 36,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 6
+        },
+        {
+          "dir": "desktop",
+          "files": 5
+        },
+        {
+          "dir": "tests",
+          "files": 2
+        },
+        {
+          "dir": "README.md",
+          "files": 1
+        },
+        {
+          "dir": "docs",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 7,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/office-studio-slides",
+      "ref": "origin/feat/office-studio-slides",
+      "kind": "feat",
+      "head_sha": "b4d678656bfe",
+      "last_subject": "feat(office-studio): wire Slides into a real presentation editor",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T05:23:59+01:00",
+      "merge_base": "773d00725164",
+      "resolvable": true,
+      "ahead": 4,
+      "behind": 463,
+      "merged": false,
+      "files_changed": 10,
+      "insertions": 1617,
+      "deletions": 149,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 10
+        }
+      ],
+      "absorbed_files": 6,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/appstudio-code-analyzer",
+      "ref": "origin/feat/appstudio-code-analyzer",
+      "kind": "feat",
+      "head_sha": "76292bb37b36",
+      "last_subject": "fix(code-analyzer): fold Kilo findings (analyze DoS limits, TOCTOU, utf8 replace, sort perf, detector coverage)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T11:46:47+01:00",
+      "merge_base": "c19e2f7fe5f8",
+      "resolvable": true,
+      "ahead": 4,
+      "behind": 459,
+      "merged": false,
+      "files_changed": 9,
+      "insertions": 1403,
+      "deletions": 9,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 5
+        },
+        {
+          "dir": "tests",
+          "files": 2
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 5,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/consent-project-picker",
+      "ref": "origin/feat/consent-project-picker",
+      "kind": "feat",
+      "head_sha": "24f12316f92d",
+      "last_subject": "fix(consent): tighten project gate and require project_id for project_tasks",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-10T23:54:03+01:00",
+      "merge_base": "b8acce7c61e9",
+      "resolvable": true,
+      "ahead": 4,
+      "behind": 238,
+      "merged": false,
+      "files_changed": 7,
+      "insertions": 393,
+      "deletions": 11,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 5
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 2,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/web-studio-real-gen-sandbox-share",
+      "ref": "origin/feat/web-studio-real-gen-sandbox-share",
+      "kind": "feat",
+      "head_sha": "601222e26546",
+      "last_subject": "fix(web-studio): fold Kilo review findings",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T16:58:27+01:00",
+      "merge_base": "3bcbe1055181",
+      "resolvable": true,
+      "ahead": 3,
+      "behind": 420,
+      "merged": false,
+      "files_changed": 18,
+      "insertions": 1520,
+      "deletions": 102,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 14
+        },
+        {
+          "dir": "tests",
+          "files": 2
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 18,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "feat/nous-portal-provider",
+      "ref": "origin/feat/nous-portal-provider",
+      "kind": "feat",
+      "head_sha": "6fbc343f8b96",
+      "last_subject": "feat(providers): add Nous Portal as a cloud model provider",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-22T11:39:33+00:00",
+      "merge_base": "3878ccb400c9",
+      "resolvable": true,
+      "ahead": 3,
+      "behind": 41,
+      "merged": false,
+      "files_changed": 15,
+      "insertions": 244,
+      "deletions": 30,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 7
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 7
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 9,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/userspace-container-tier",
+      "ref": "origin/feat/userspace-container-tier",
+      "kind": "feat",
+      "head_sha": "d3a57a1a860f",
+      "last_subject": "test(userspace): update stale 501 container-gate assertions for the lifted web-only gate",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T14:36:49+01:00",
+      "merge_base": "81994e6fe4b8",
+      "resolvable": true,
+      "ahead": 3,
+      "behind": 453,
+      "merged": false,
+      "files_changed": 11,
+      "insertions": 703,
+      "deletions": 48,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 6
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 3
+        },
+        {
+          "dir": "desktop",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 5,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/platform-backend-one-tap",
+      "ref": "origin/feat/platform-backend-one-tap",
+      "kind": "feat",
+      "head_sha": "df84c12f67ff",
+      "last_subject": "feat(setup): platform-aware \"install a local model backend\" checklist step",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T00:53:38+01:00",
+      "merge_base": "876caa5f406d",
+      "resolvable": true,
+      "ahead": 3,
+      "behind": 439,
+      "merged": false,
+      "files_changed": 10,
+      "insertions": 1264,
+      "deletions": 128,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 3
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 3
+        },
+        {
+          "dir": "desktop",
+          "files": 2
+        },
+        {
+          "dir": "app-catalog",
+          "files": 1
+        },
+        {
+          "dir": "scripts",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 8,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/files-trash-and-modal-zindex",
+      "ref": "origin/fix/files-trash-and-modal-zindex",
+      "kind": "fix",
+      "head_sha": "268750b71aec",
+      "last_subject": "fix(files): validate trash item_id against path traversal before destructive ops",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T01:09:34+01:00",
+      "merge_base": "876caa5f406d",
+      "resolvable": true,
+      "ahead": 3,
+      "behind": 439,
+      "merged": false,
+      "files_changed": 10,
+      "insertions": 954,
+      "deletions": 28,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 4
+        },
+        {
+          "dir": "desktop",
+          "files": 3
+        },
+        {
+          "dir": "CHANGELOG.md",
+          "files": 1
+        },
+        {
+          "dir": "docs",
+          "files": 1
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 6,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/browser-cdp-driver",
+      "ref": "origin/feat/browser-cdp-driver",
+      "kind": "feat",
+      "head_sha": "5ca0e827fd61",
+      "last_subject": "test(browser): fake-CDP server tests + Phase B port-wiring assertions",
+      "last_author": "jaylfc",
+      "last_date": "2026-06-08T05:39:47+01:00",
+      "merge_base": "2a7eb8b4911e",
+      "resolvable": true,
+      "ahead": 3,
+      "behind": 2022,
+      "merged": false,
+      "files_changed": 8,
+      "insertions": 1202,
+      "deletions": 14,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 3
+        },
+        {
+          "dir": "app-catalog",
+          "files": 2
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        },
+        {
+          "dir": ".github",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 2,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/office-ai-assist",
+      "ref": "origin/feat/office-ai-assist",
+      "kind": "feat",
+      "head_sha": "975bcb1120af",
+      "last_subject": "fix(office): fold Kilo review findings into Write Assist and Calc Ask your data",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T21:12:41+01:00",
+      "merge_base": "4b0c96122537",
+      "resolvable": true,
+      "ahead": 3,
+      "behind": 418,
+      "merged": false,
+      "files_changed": 6,
+      "insertions": 1039,
+      "deletions": 24,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 6
+        }
+      ],
+      "absorbed_files": 6,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "feat/music-studio-wav-export",
+      "ref": "origin/feat/music-studio-wav-export",
+      "kind": "feat",
+      "head_sha": "3361beed89b6",
+      "last_subject": "fix(music-studio): harden WAV bounce guards per review",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-05T00:55:27+01:00",
+      "merge_base": "0ac11c1b999e",
+      "resolvable": true,
+      "ahead": 3,
+      "behind": 408,
+      "merged": false,
+      "files_changed": 4,
+      "insertions": 509,
+      "deletions": 24,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 4
+        }
+      ],
+      "absorbed_files": 4,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "docs/skill-refresh",
+      "ref": "origin/docs/skill-refresh",
+      "kind": "docs",
+      "head_sha": "bf539f43eca7",
+      "last_subject": "docs(skill): fold kilo - state the GraphQL-vs-REST bot-login form difference explicitly + null-guard the REST jq",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-18T22:56:36+01:00",
+      "merge_base": "0e6e6fabf055",
+      "resolvable": true,
+      "ahead": 3,
+      "behind": 96,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 88,
+      "deletions": 57,
+      "top_dirs": [
+        {
+          "dir": ".claude",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/csrf-global-fetch",
+      "ref": "origin/fix/csrf-global-fetch",
+      "kind": "fix",
+      "head_sha": "7831e6086ad7",
+      "last_subject": "fold kilo: also attach CSRF header to same-origin Request-object fetches",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-18T13:07:05+01:00",
+      "merge_base": "0e6e6fabf055",
+      "resolvable": true,
+      "ahead": 3,
+      "behind": 96,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 91,
+      "deletions": 1,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 2,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "fix/reject-embedding-agent-model",
+      "ref": "origin/fix/reject-embedding-agent-model",
+      "kind": "fix",
+      "head_sha": "3db13b6fbcee",
+      "last_subject": "fix(agents): tolerate missing app.state.registry in the context-window warning",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-08T18:32:57+01:00",
+      "merge_base": "11aa00bd1e40",
+      "resolvable": true,
+      "ahead": 3,
+      "behind": 264,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 164,
+      "deletions": 1,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "review/docs-path-classification",
+      "ref": "origin/review/docs-path-classification",
+      "kind": "docs",
+      "head_sha": "a61ced1b38e5",
+      "last_subject": "ci: re-trigger checks",
+      "last_author": "jaylfc",
+      "last_date": "2026-06-17T23:29:06+01:00",
+      "merge_base": "b961e29ad35a",
+      "resolvable": true,
+      "ahead": 3,
+      "behind": 1542,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 31,
+      "deletions": 2,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "docs/contributor-pitfalls",
+      "ref": "origin/docs/contributor-pitfalls",
+      "kind": "docs",
+      "head_sha": "e19c47d0f36e",
+      "last_subject": "docs: extend pitfall 14 with the stale-base green lesson from the #2009/#1932 incident",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-19T14:39:03+01:00",
+      "merge_base": "992d797f093c",
+      "resolvable": true,
+      "ahead": 3,
+      "behind": 65,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 112,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "docs",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "docs/cross-user-collab-spec",
+      "ref": "origin/docs/cross-user-collab-spec",
+      "kind": "docs",
+      "head_sha": "f261ab86e8ce",
+      "last_subject": "docs(design): address 1 Kilo + 5 CodeRabbit security findings on cross-user-collab spec (#2024)",
+      "last_author": "hognek",
+      "last_date": "2026-07-18T20:54:33+01:00",
+      "merge_base": "4adb976d922f",
+      "resolvable": true,
+      "ahead": 3,
+      "behind": 89,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 588,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "docs",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "exec/tsk-bdclrf",
+      "ref": "origin/exec/tsk-bdclrf",
+      "kind": "exec-scratch",
+      "head_sha": "37e32fecb492",
+      "last_subject": "add a Vitest test next to desktop/src/components/ServiceIcon",
+      "last_author": "jaylfc",
+      "last_date": "2026-06-20T00:59:41+01:00",
+      "merge_base": "f7dbd389c6eb",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 1244,
+      "merged": false,
+      "files_changed": 1499,
+      "insertions": 373608,
+      "deletions": 3,
+      "top_dirs": [
+        {
+          "dir": "node_modules",
+          "files": 1496
+        },
+        {
+          "dir": "desktop",
+          "files": 1
+        },
+        {
+          "dir": "package-lock.json",
+          "files": 1
+        },
+        {
+          "dir": "package.json",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/music-studio-daw",
+      "ref": "origin/feat/music-studio-daw",
+      "kind": "feat",
+      "head_sha": "a164ab910d70",
+      "last_subject": "fix(music-studio): fold Kilo review \u2014 incremental edits, non-destructive piano-roll, content cap, robustness",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T18:42:33+01:00",
+      "merge_base": "4b0c96122537",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 418,
+      "merged": false,
+      "files_changed": 27,
+      "insertions": 3232,
+      "deletions": 358,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 20
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 4
+        },
+        {
+          "dir": "tests",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 20,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/routines-schedules",
+      "ref": "origin/feat/routines-schedules",
+      "kind": "feat",
+      "head_sha": "b8b46894aac0",
+      "last_subject": "fix(projects): harden routines \u2014 cron validation, atomic fire, indexed token, webhook rate limit",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T14:45:27+01:00",
+      "merge_base": "18af51ad9eeb",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 423,
+      "merged": false,
+      "files_changed": 17,
+      "insertions": 2108,
+      "deletions": 4,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 6
+        },
+        {
+          "dir": "desktop",
+          "files": 5
+        },
+        {
+          "dir": "tests",
+          "files": 4
+        },
+        {
+          "dir": "pyproject.toml",
+          "files": 1
+        },
+        {
+          "dir": "uv.lock",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 9,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/weight-license-metadata-nc-gate",
+      "ref": "origin/feat/weight-license-metadata-nc-gate",
+      "kind": "feat",
+      "head_sha": "e58c9b59fbeb",
+      "last_subject": "fix(store): start install-progress poller on license-accept install; clearer empty weights-license label",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T22:42:49+01:00",
+      "merge_base": "7ce31f628242",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 412,
+      "merged": false,
+      "files_changed": 17,
+      "insertions": 753,
+      "deletions": 11,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 5
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 5
+        },
+        {
+          "dir": "desktop",
+          "files": 4
+        },
+        {
+          "dir": "app-catalog",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 12,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/elements-slice-3",
+      "ref": "origin/feat/elements-slice-3",
+      "kind": "feat",
+      "head_sha": "dd710d44d8f2",
+      "last_subject": "chore(projects): doc-gate trailer for elements slice 3 UI",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-14T00:11:42+01:00",
+      "merge_base": "c5190e9eb08b",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 204,
+      "merged": false,
+      "files_changed": 15,
+      "insertions": 1342,
+      "deletions": 74,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 15
+        }
+      ],
+      "absorbed_files": 14,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/agent-governance-slice1",
+      "ref": "origin/feat/agent-governance-slice1",
+      "kind": "feat",
+      "head_sha": "a05bca78f48b",
+      "last_subject": "feat(governance): narrow default gating + exempt admin human sessions (#160 slice 1)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T14:38:17+01:00",
+      "merge_base": "18af51ad9eeb",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 423,
+      "merged": false,
+      "files_changed": 12,
+      "insertions": 913,
+      "deletions": 1,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 6
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 6
+        }
+      ],
+      "absorbed_files": 7,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/task-relational-context",
+      "ref": "origin/feat/task-relational-context",
+      "kind": "feat",
+      "head_sha": "6b0e870958f1",
+      "last_subject": "docs: no README change for relational-context",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T13:12:29+01:00",
+      "merge_base": "44bdf5c91fba",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 424,
+      "merged": false,
+      "files_changed": 12,
+      "insertions": 555,
+      "deletions": 22,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 5
+        },
+        {
+          "dir": "desktop",
+          "files": 4
+        },
+        {
+          "dir": "tests",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 5,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/model-reachability-provider-errors",
+      "ref": "origin/fix/model-reachability-provider-errors",
+      "kind": "fix",
+      "head_sha": "66826afff614",
+      "last_subject": "fix(models): guard _required_backend_ids against non-dict manifest variants",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T09:55:01+01:00",
+      "merge_base": "7db32e4806fa",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 433,
+      "merged": false,
+      "files_changed": 12,
+      "insertions": 515,
+      "deletions": 21,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 6
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 6
+        }
+      ],
+      "absorbed_files": 7,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "perf/controller-restart-time",
+      "ref": "origin/perf/controller-restart-time",
+      "kind": "chore",
+      "head_sha": "9fd9b4a8380d",
+      "last_subject": "fix(shutdown): dedupe stamp only on successful prepare; correct stop_all error logging; sturdier concurrency test",
+      "last_author": "jaylfc",
+      "last_date": "2026-06-12T13:43:56+01:00",
+      "merge_base": "715bd5cc7842",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 1906,
+      "merged": false,
+      "files_changed": 12,
+      "insertions": 308,
+      "deletions": 123,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 5
+        },
+        {
+          "dir": "tests",
+          "files": 4
+        },
+        {
+          "dir": "systemd",
+          "files": 2
+        },
+        {
+          "dir": "scripts",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 8,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/elements-slice-1",
+      "ref": "origin/feat/elements-slice-1",
+      "kind": "feat",
+      "head_sha": "cdce1721b422",
+      "last_subject": "test(projects): slice 1 element store, CRUD route, and task tag coverage",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-13T08:53:42+01:00",
+      "merge_base": "a33276b05f9a",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 211,
+      "merged": false,
+      "files_changed": 10,
+      "insertions": 1044,
+      "deletions": 13,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 6
+        },
+        {
+          "dir": "tests",
+          "files": 4
+        }
+      ],
+      "absorbed_files": 3,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/mobile-pass-1",
+      "ref": "origin/fix/mobile-pass-1",
+      "kind": "fix",
+      "head_sha": "20b23ce2b933",
+      "last_subject": "fix(images): edit options panel goes full-width when stacked on mobile",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-08T22:42:06+01:00",
+      "merge_base": "33a6dbbfd690",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 259,
+      "merged": false,
+      "files_changed": 9,
+      "insertions": 29,
+      "deletions": 17,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 9
+        }
+      ],
+      "absorbed_files": 8,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/docreview-stamp-store",
+      "ref": "origin/feat/docreview-stamp-store",
+      "kind": "feat",
+      "head_sha": "0de7099d5a4c",
+      "last_subject": "feat(projects): add doc-review stamp badge to FilesApp and fix projects.ts types",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-15T13:08:06+01:00",
+      "merge_base": "70956abae7ba",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 200,
+      "merged": false,
+      "files_changed": 8,
+      "insertions": 833,
+      "deletions": 2,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 5
+        },
+        {
+          "dir": "desktop",
+          "files": 2
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 3,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/os-level-agent-invites",
+      "ref": "origin/feat/os-level-agent-invites",
+      "kind": "feat",
+      "head_sha": "67f037b9ac6f",
+      "last_subject": "fold kilo review: strip project scopes + validate display_name (#1918)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-18T08:07:26+01:00",
+      "merge_base": "276286006f5a",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 100,
+      "merged": false,
+      "files_changed": 8,
+      "insertions": 1026,
+      "deletions": 83,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 4
+        },
+        {
+          "dir": "desktop",
+          "files": 2
+        },
+        {
+          "dir": "tests",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/invite-s1-store",
+      "ref": "origin/feat/invite-s1-store",
+      "kind": "feat",
+      "head_sha": "a58179e39349",
+      "last_subject": "fix(invite): make project_id nullable for agent-centric invites",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-16T19:53:19+01:00",
+      "merge_base": "f688239f3e41",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 163,
+      "merged": false,
+      "files_changed": 7,
+      "insertions": 829,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 4
+        },
+        {
+          "dir": "tests",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/images-quality-tier-downgrade-honesty",
+      "ref": "origin/fix/images-quality-tier-downgrade-honesty",
+      "kind": "fix",
+      "head_sha": "5f4afb047d44",
+      "last_subject": "fix(images): show disabled-tier tooltip + align tier_healthy with router",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T18:39:51+01:00",
+      "merge_base": "4b0c96122537",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 418,
+      "merged": false,
+      "files_changed": 7,
+      "insertions": 372,
+      "deletions": 14,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 5
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 6,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/agent-context-budget",
+      "ref": "origin/feat/agent-context-budget",
+      "kind": "feat",
+      "head_sha": "7e9f963aa0fb",
+      "last_subject": "fix(chat): cap history budget at the default when a recipient window is unknown",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-10T23:48:35+01:00",
+      "merge_base": "b8acce7c61e9",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 238,
+      "merged": false,
+      "files_changed": 6,
+      "insertions": 333,
+      "deletions": 7,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 3
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 6,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "feat/office-database-view",
+      "ref": "origin/feat/office-database-view",
+      "kind": "feat",
+      "head_sha": "cabe30433d77",
+      "last_subject": "fix(office): address Database view review \u2014 coerce on type change, guard async, tighten types",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T16:20:33+01:00",
+      "merge_base": "3bcbe1055181",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 420,
+      "merged": false,
+      "files_changed": 6,
+      "insertions": 1078,
+      "deletions": 2,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 6
+        }
+      ],
+      "absorbed_files": 4,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/taos-agent-runtime",
+      "ref": "origin/fix/taos-agent-runtime",
+      "kind": "fix",
+      "head_sha": "97a9de68404a",
+      "last_subject": "fix(taos-agent): render dialog shell + error state instead of blank window (#1615)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T09:57:13+01:00",
+      "merge_base": "7db32e4806fa",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 433,
+      "merged": false,
+      "files_changed": 6,
+      "insertions": 315,
+      "deletions": 15,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        },
+        {
+          "dir": "tests",
+          "files": 2
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 3,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/video-studio-async-job",
+      "ref": "origin/fix/video-studio-async-job",
+      "kind": "fix",
+      "head_sha": "c1fa6891e465",
+      "last_subject": "fix(video-studio): harden video job store + poll path against Kilo findings",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T23:46:28+01:00",
+      "merge_base": "64f28424451c",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 410,
+      "merged": false,
+      "files_changed": 6,
+      "insertions": 487,
+      "deletions": 82,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 3
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 4,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/hub-slice-2",
+      "ref": "origin/feat/hub-slice-2",
+      "kind": "feat",
+      "head_sha": "def23ef58358",
+      "last_subject": "chore(hub): doc-gate trailer for the hub store slice",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-13T06:41:59+01:00",
+      "merge_base": "b827b9078710",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 213,
+      "merged": false,
+      "files_changed": 5,
+      "insertions": 705,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 3
+        },
+        {
+          "dir": "tests",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/managed-backend-contract",
+      "ref": "origin/feat/managed-backend-contract",
+      "kind": "feat",
+      "head_sha": "52f960eb870b",
+      "last_subject": "fix(manifest-lint): harden auto_manage/YAML checks (fold Kilo review on #1756)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-09T01:43:00+01:00",
+      "merge_base": "4b39d454e106",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 254,
+      "merged": false,
+      "files_changed": 4,
+      "insertions": 283,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": ".github",
+          "files": 1
+        },
+        {
+          "dir": "app-catalog",
+          "files": 1
+        },
+        {
+          "dir": "scripts",
+          "files": 1
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 3,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/taosnet-passkey-client",
+      "ref": "origin/feat/taosnet-passkey-client",
+      "kind": "feat",
+      "head_sha": "fc68b9c9eba0",
+      "last_subject": "test(download-manager): accept passkey/web_seeds in torrent.download mocks",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-08T15:12:43+01:00",
+      "merge_base": "1d0724714ef0",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 266,
+      "merged": false,
+      "files_changed": 4,
+      "insertions": 212,
+      "deletions": 3,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 2
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/canvas-text-render",
+      "ref": "origin/fix/canvas-text-render",
+      "kind": "fix",
+      "head_sha": "d9e5da03cd1a",
+      "last_subject": "chore(canvas): doc-gate trailer for text shape",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-13T23:48:58+01:00",
+      "merge_base": "c5190e9eb08b",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 204,
+      "merged": false,
+      "files_changed": 4,
+      "insertions": 100,
+      "deletions": 2,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 4
+        }
+      ],
+      "absorbed_files": 3,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/logs-app",
+      "ref": "origin/fix/logs-app",
+      "kind": "fix",
+      "head_sha": "0efce2d2c838",
+      "last_subject": "feat(logs): wire Settings Logs pane to the system-logs API",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T14:45:57+01:00",
+      "merge_base": "81994e6fe4b8",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 453,
+      "merged": false,
+      "files_changed": 4,
+      "insertions": 798,
+      "deletions": 12,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        },
+        {
+          "dir": "desktop",
+          "files": 1
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 3,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/providers-error-state",
+      "ref": "origin/fix/providers-error-state",
+      "kind": "fix",
+      "head_sha": "f07fb64c0801",
+      "last_subject": "Merge branch 'master' into fix/providers-error-state",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T15:17:39+01:00",
+      "merge_base": "81994e6fe4b8",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 443,
+      "merged": false,
+      "files_changed": 4,
+      "insertions": 163,
+      "deletions": 5,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "exec/tsk-ihf2vw",
+      "ref": "origin/exec/tsk-ihf2vw",
+      "kind": "exec-scratch",
+      "head_sha": "8ba4d2671299",
+      "last_subject": "tsk-ihf2vw  [OPEN]  Library UI: storage accounting view",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-21T21:09:03+00:00",
+      "merge_base": "3878ccb400c9",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 41,
+      "merged": false,
+      "files_changed": 3,
+      "insertions": 408,
+      "deletions": 46,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/members-rename-confirm",
+      "ref": "origin/feat/members-rename-confirm",
+      "kind": "feat",
+      "head_sha": "f393b97e1874",
+      "last_subject": "fold kilo + coderabbit on members rename/confirm",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-18T13:11:21+01:00",
+      "merge_base": "0e6e6fabf055",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 96,
+      "merged": false,
+      "files_changed": 3,
+      "insertions": 353,
+      "deletions": 26,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 2,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/agents-mobile",
+      "ref": "origin/fix/agents-mobile",
+      "kind": "fix",
+      "head_sha": "4bf676788f50",
+      "last_subject": "fix(agents): mobile header buttons to 44px tap targets",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-08T22:21:04+01:00",
+      "merge_base": "33a6dbbfd690",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 259,
+      "merged": false,
+      "files_changed": 3,
+      "insertions": 111,
+      "deletions": 27,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 3,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "fix/onboarding-gate-mermaid",
+      "ref": "origin/fix/onboarding-gate-mermaid",
+      "kind": "fix",
+      "head_sha": "42d7be9db924",
+      "last_subject": "fix onboarding tests for the gated username step (#1844)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-18T08:10:59+01:00",
+      "merge_base": "276286006f5a",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 100,
+      "merged": false,
+      "files_changed": 3,
+      "insertions": 25,
+      "deletions": 10,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "docs/gate-agent-api",
+      "ref": "origin/docs/gate-agent-api",
+      "kind": "docs",
+      "head_sha": "960491359781",
+      "last_subject": "docs: reference the invite design by issue #1780, not the unmerged file path",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-16T19:41:48+01:00",
+      "merge_base": "f688239f3e41",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 163,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 35,
+      "deletions": 1,
+      "top_dirs": [
+        {
+          "dir": "docs",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "exec/tsk-fnqd7e",
+      "ref": "origin/exec/tsk-fnqd7e",
+      "kind": "exec-scratch",
+      "head_sha": "b51e07ccc806",
+      "last_subject": "add a Vitest test next to desktop/src/components/UpdateAvailableToast",
+      "last_author": "jaylfc",
+      "last_date": "2026-06-20T01:21:30+01:00",
+      "merge_base": "9835c72b4bfa",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 1239,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 61,
+      "deletions": 1,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 1
+        },
+        {
+          "dir": "node_modules",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "exec/tsk-pv3xrn",
+      "ref": "origin/exec/tsk-pv3xrn",
+      "kind": "exec-scratch",
+      "head_sha": "82653e27d38b",
+      "last_subject": "add a Vitest test next to desktop/src/components/ConsentNotification",
+      "last_author": "jaylfc",
+      "last_date": "2026-06-20T01:35:53+01:00",
+      "merge_base": "bf448735b5e1",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 1236,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 88,
+      "deletions": 1,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 1
+        },
+        {
+          "dir": "node_modules",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "exec/tsk-xq7iz3",
+      "ref": "origin/exec/tsk-xq7iz3",
+      "kind": "exec-scratch",
+      "head_sha": "b4246a98b309",
+      "last_subject": "add a Vitest test next to desktop/src/components/ContextMenu",
+      "last_author": "jaylfc",
+      "last_date": "2026-06-20T01:38:04+01:00",
+      "merge_base": "bf448735b5e1",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 1236,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 62,
+      "deletions": 1,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 1
+        },
+        {
+          "dir": "node_modules",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/account-slice-3",
+      "ref": "origin/feat/account-slice-3",
+      "kind": "feat",
+      "head_sha": "308ab91d9ac7",
+      "last_subject": "test(account): cover subdomain proxy forwarding, 503, and name validation",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-12T15:19:15+01:00",
+      "merge_base": "1869e4e74818",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 223,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 222,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/backend-service-manager",
+      "ref": "origin/feat/backend-service-manager",
+      "kind": "feat",
+      "head_sha": "1d1749ecb8d1",
+      "last_subject": "fix(backend-services): drain+close subprocess pipes on restart timeout (fold Kilo on #1758)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-09T03:12:22+01:00",
+      "merge_base": "d8c555af95f0",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 252,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 430,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/hailo-slice-3",
+      "ref": "origin/feat/hailo-slice-3",
+      "kind": "feat",
+      "head_sha": "113c21176a6e",
+      "last_subject": "fix(hailo): declare the proprietary license in the hailo-ollama manifest",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-13T03:45:02+01:00",
+      "merge_base": "a26607781e2f",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 217,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 44,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "app-catalog",
+          "files": 1
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 2,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "fix/mac-app-rebuild",
+      "ref": "origin/fix/mac-app-rebuild",
+      "kind": "fix",
+      "head_sha": "ede3c1ed60f2",
+      "last_subject": "fix(mac): locate the SPA root by index.html, guard against layout drift",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T11:43:59+01:00",
+      "merge_base": "c19e2f7fe5f8",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 459,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 163,
+      "deletions": 26,
+      "top_dirs": [
+        {
+          "dir": "mac",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 2,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "fix/registry-poll-scroll",
+      "ref": "origin/fix/registry-poll-scroll",
+      "kind": "fix",
+      "head_sha": "f07f73cadb37",
+      "last_subject": "fix(desktop): guard registryEntriesEqual index access and drop em dashes",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-11T10:48:52+01:00",
+      "merge_base": "5004a829b374",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 234,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 132,
+      "deletions": 17,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "docs/readme-agent-collaboration",
+      "ref": "origin/docs/readme-agent-collaboration",
+      "kind": "docs",
+      "head_sha": "0c7980531f15",
+      "last_subject": "docs(readme): reference only docs that exist on dev",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-13T12:13:18+01:00",
+      "merge_base": "81f8d924e3e8",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 207,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 11,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "README.md",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/hailo-slice-2",
+      "ref": "origin/feat/hailo-slice-2",
+      "kind": "feat",
+      "head_sha": "9c3c2eb3c7e6",
+      "last_subject": "chore(hailo): doc-gate trailer for install-hailo.sh",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-12T23:50:02+01:00",
+      "merge_base": "9d006f476ab9",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 219,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 479,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "scripts",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/1730-rkllama-pin-preload",
+      "ref": "origin/fix/1730-rkllama-pin-preload",
+      "kind": "fix",
+      "head_sha": "a52eabf26172",
+      "last_subject": "fix(install-rknpu): pin rkllama with --preload restore + context-overflow fix (#1730, #1732)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-08T07:20:45+01:00",
+      "merge_base": "159a0985595c",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 272,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 2,
+      "deletions": 2,
+      "top_dirs": [
+        {
+          "dir": "scripts",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "spec/backend-service-mgmt",
+      "ref": "origin/spec/backend-service-mgmt",
+      "kind": "chore",
+      "head_sha": "4e68ab5c2db6",
+      "last_subject": "docs(design): correct contract to extend existing lifecycle block (not a new managed block)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-09T01:17:08+01:00",
+      "merge_base": "dda9cce57cb3",
+      "resolvable": true,
+      "ahead": 2,
+      "behind": 255,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 112,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "docs",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "feat/elements-slice-2",
+      "ref": "origin/feat/elements-slice-2",
+      "kind": "feat",
+      "head_sha": "53415d4257ca",
+      "last_subject": "feat(projects): kanban element filter bar (slice 2)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-13T10:26:22+01:00",
+      "merge_base": "c7825d84720e",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 209,
+      "merged": false,
+      "files_changed": 19,
+      "insertions": 312,
+      "deletions": 6,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 19
+        }
+      ],
+      "absorbed_files": 16,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "verify/design-batch",
+      "ref": "origin/verify/design-batch",
+      "kind": "chore",
+      "head_sha": "c86d421e88f8",
+      "last_subject": "Merge remote-tracking branches 'origin/feat/images-edit-backends', 'origin/feat/agents-cards' and 'origin/feat/contacts-polish' into verify/design-batch",
+      "last_author": "jaylfc",
+      "last_date": "2026-06-14T19:40:46+01:00",
+      "merge_base": "ab267d452d9e",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 1751,
+      "merged": false,
+      "files_changed": 15,
+      "insertions": 2393,
+      "deletions": 458,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 7
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 5
+        },
+        {
+          "dir": "app-catalog",
+          "files": 1
+        },
+        {
+          "dir": "scripts",
+          "files": 1
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/app-studio-real-pipeline",
+      "ref": "origin/feat/app-studio-real-pipeline",
+      "kind": "feat",
+      "head_sha": "eb18ffb0b73f",
+      "last_subject": "feat(app-studio): real build to package to analyze to install to sandbox-render pipeline (mock to functional)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T21:32:02+01:00",
+      "merge_base": "61595e47dd4b",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 416,
+      "merged": false,
+      "files_changed": 13,
+      "insertions": 1019,
+      "deletions": 350,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 11
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 13,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "feat/elements-slice-4",
+      "ref": "origin/feat/elements-slice-4",
+      "kind": "feat",
+      "head_sha": "3488325a6092",
+      "last_subject": "Projects elements slice 4: element-scoped canvas + files",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-14T01:06:08+01:00",
+      "merge_base": "a16da5f6dcbe",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 202,
+      "merged": false,
+      "files_changed": 13,
+      "insertions": 354,
+      "deletions": 39,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 5
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 5
+        },
+        {
+          "dir": "tests",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 6,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/settings-persist-apply",
+      "ref": "origin/fix/settings-persist-apply",
+      "kind": "fix",
+      "head_sha": "526da957fcbe",
+      "last_subject": "fix(settings): persist theme/wallpaper across sessions + apply Desktop & Dock settings (#1601, #1603)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T01:36:58+01:00",
+      "merge_base": "1d68683d9d86",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 435,
+      "merged": false,
+      "files_changed": 13,
+      "insertions": 307,
+      "deletions": 44,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 11
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 8,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/design-studio-persistence",
+      "ref": "origin/feat/design-studio-persistence",
+      "kind": "feat",
+      "head_sha": "abcc61bee725",
+      "last_subject": "feat(design-studio): save/open/rename/delete designs (persistence)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T21:05:32+01:00",
+      "merge_base": "61595e47dd4b",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 416,
+      "merged": false,
+      "files_changed": 12,
+      "insertions": 1102,
+      "deletions": 6,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 5
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 4
+        },
+        {
+          "dir": "tests",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 9,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/pwa-web-push",
+      "ref": "origin/feat/pwa-web-push",
+      "kind": "feat",
+      "head_sha": "31084bec8fe5",
+      "last_subject": "feat(notifications): OS-level PWA web-push (VAPID) for taOS notifications",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-10T23:25:16+01:00",
+      "merge_base": "b8acce7c61e9",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 238,
+      "merged": false,
+      "files_changed": 12,
+      "insertions": 1317,
+      "deletions": 20,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 6
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 5
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 7,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/council-role-registry",
+      "ref": "origin/feat/council-role-registry",
+      "kind": "feat",
+      "head_sha": "d32c4a9e435f",
+      "last_subject": "feat(council): role registry + member store slice per taos-council.md",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-15T11:33:55+01:00",
+      "merge_base": "70956abae7ba",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 200,
+      "merged": false,
+      "files_changed": 9,
+      "insertions": 423,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 6
+        },
+        {
+          "dir": "tests",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 6,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/hub-slice-4",
+      "ref": "origin/feat/hub-slice-4",
+      "kind": "feat",
+      "head_sha": "4c3bef2640a9",
+      "last_subject": "feat(hub): post objects, chain logic, image ingest, composer + own-timeline (slice 4)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-13T10:33:29+01:00",
+      "merge_base": "c7825d84720e",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 209,
+      "merged": false,
+      "files_changed": 9,
+      "insertions": 1310,
+      "deletions": 6,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 4
+        },
+        {
+          "dir": "desktop",
+          "files": 3
+        },
+        {
+          "dir": "tests",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 5,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/docreview-markdown-reader",
+      "ref": "origin/feat/docreview-markdown-reader",
+      "kind": "feat",
+      "head_sha": "4f12986ae200",
+      "last_subject": "feat(projects): markdown doc reader (#1802 slice 1)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-15T11:34:40+01:00",
+      "merge_base": "70956abae7ba",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 200,
+      "merged": false,
+      "files_changed": 8,
+      "insertions": 773,
+      "deletions": 14,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 8
+        }
+      ],
+      "absorbed_files": 4,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/hub-slice-3",
+      "ref": "origin/feat/hub-slice-3",
+      "kind": "feat",
+      "head_sha": "6b315467039b",
+      "last_subject": "feat(hub): follow / friend / circle model + request brokering (slice 3)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-13T07:28:15+01:00",
+      "merge_base": "a33276b05f9a",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 211,
+      "merged": false,
+      "files_changed": 8,
+      "insertions": 1431,
+      "deletions": 16,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 5
+        },
+        {
+          "dir": "tests",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 3,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/audit-hotfix-vram-manifest",
+      "ref": "origin/fix/audit-hotfix-vram-manifest",
+      "kind": "fix",
+      "head_sha": "e4c33152fd4a",
+      "last_subject": "fix(worker,models): audit hotfixes - manifest crash, VRAM fail-open, real min_ram_mb key",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-09T21:55:49+01:00",
+      "merge_base": "9ac0ff7da9be",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 247,
+      "merged": false,
+      "files_changed": 8,
+      "insertions": 206,
+      "deletions": 60,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 5
+        },
+        {
+          "dir": "tests",
+          "files": 2
+        },
+        {
+          "dir": "scripts",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 2,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/npu-backend-install-runs-service",
+      "ref": "origin/fix/npu-backend-install-runs-service",
+      "kind": "fix",
+      "head_sha": "1a9bd89e7211",
+      "last_subject": "fix(npu): store install actually creates+starts+verifies the rkllama service (self-heal) + one-tap install endpoint",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T20:15:56+01:00",
+      "merge_base": "0211e234e3fe",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 444,
+      "merged": false,
+      "files_changed": 8,
+      "insertions": 415,
+      "deletions": 22,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 3
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 3
+        },
+        {
+          "dir": "app-catalog",
+          "files": 1
+        },
+        {
+          "dir": "scripts",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/settings-persist-across-login",
+      "ref": "origin/fix/settings-persist-across-login",
+      "kind": "fix",
+      "head_sha": "8c19a466d701",
+      "last_subject": "fix(settings): actually persist theme/wallpaper/dock across sessions (#1601, #1603)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T09:27:34+01:00",
+      "merge_base": "7db32e4806fa",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 433,
+      "merged": false,
+      "files_changed": 8,
+      "insertions": 351,
+      "deletions": 14,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 7
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 5,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/hailo-slice-5",
+      "ref": "origin/feat/hailo-slice-5",
+      "kind": "feat",
+      "head_sha": "816a94a414d1",
+      "last_subject": "feat(hailo): slice 5 runtime detection + provider adapter for Hailo-10H (per design doc)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-13T05:52:56+01:00",
+      "merge_base": "b827b9078710",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 213,
+      "merged": false,
+      "files_changed": 7,
+      "insertions": 129,
+      "deletions": 5,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 4
+        },
+        {
+          "dir": "tests",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 2,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/consent-ui-nits",
+      "ref": "origin/fix/consent-ui-nits",
+      "kind": "fix",
+      "head_sha": "e64621fa1390",
+      "last_subject": "fix(userspace): consent dialog dismiss-guard while submitting + skip needless row fetch",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T15:50:53+01:00",
+      "merge_base": "1d32f3aef007",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 447,
+      "merged": false,
+      "files_changed": 7,
+      "insertions": 78,
+      "deletions": 11,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 5
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 5,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/installer-account-hub",
+      "ref": "origin/fix/installer-account-hub",
+      "kind": "fix",
+      "head_sha": "c053ec1add1f",
+      "last_subject": "fix(security): account proxy stops forwarding local session cookie + hub binds author to signing key (audit #7, #8)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-16T10:21:16+01:00",
+      "merge_base": "5d5dec328db5",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 171,
+      "merged": false,
+      "files_changed": 7,
+      "insertions": 170,
+      "deletions": 14,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 4
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 5,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/userspace-consent-ui",
+      "ref": "origin/feat/userspace-consent-ui",
+      "kind": "feat",
+      "head_sha": "1e8494c5e5c7",
+      "last_subject": "feat(userspace): install-time permission consent dialog",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T12:59:11+01:00",
+      "merge_base": "75532f6db8cb",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 454,
+      "merged": false,
+      "files_changed": 6,
+      "insertions": 452,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 6
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/fold-kilo-1748-1749",
+      "ref": "origin/fix/fold-kilo-1748-1749",
+      "kind": "fix",
+      "head_sha": "711ddfe227a7",
+      "last_subject": "fix(agent-window,activity): fold Kilo review findings from #1748/#1749",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-08T21:55:59+01:00",
+      "merge_base": "33a6dbbfd690",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 259,
+      "merged": false,
+      "files_changed": 6,
+      "insertions": 73,
+      "deletions": 27,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 4
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 3,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/framework-store-install",
+      "ref": "origin/fix/framework-store-install",
+      "kind": "fix",
+      "head_sha": "daf8fc95a21e",
+      "last_subject": "fix(store): agent-framework install enables deploy + prefetches base image + notifies (#1582)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T15:02:32+01:00",
+      "merge_base": "81994e6fe4b8",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 453,
+      "merged": false,
+      "files_changed": 6,
+      "insertions": 546,
+      "deletions": 10,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 4
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/guard-randomuuid-secure-context",
+      "ref": "origin/fix/guard-randomuuid-secure-context",
+      "kind": "fix",
+      "head_sha": "584d2ca42147",
+      "last_subject": "fix(desktop): guard crypto.randomUUID for non-secure-context (http) across assistant/push/webstudio",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T14:49:53+01:00",
+      "merge_base": "81994e6fe4b8",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 453,
+      "merged": false,
+      "files_changed": 6,
+      "insertions": 51,
+      "deletions": 8,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 6
+        }
+      ],
+      "absorbed_files": 5,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "release/1.0.0-beta.36",
+      "ref": "origin/release/1.0.0-beta.36",
+      "kind": "release",
+      "head_sha": "69888287e842",
+      "last_subject": "release: 1.0.0-beta.36",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-08T13:26:31+01:00",
+      "merge_base": "94b17e2fbc7e",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 267,
+      "merged": false,
+      "files_changed": 6,
+      "insertions": 19,
+      "deletions": 6,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        },
+        {
+          "dir": "CHANGELOG.md",
+          "files": 1
+        },
+        {
+          "dir": "pyproject.toml",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        },
+        {
+          "dir": "uv.lock",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "release/1.0.0-beta.37",
+      "ref": "origin/release/1.0.0-beta.37",
+      "kind": "release",
+      "head_sha": "05d73fe4edd2",
+      "last_subject": "release: 1.0.0-beta.37",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-08T19:54:09+01:00",
+      "merge_base": "06303828e58f",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 262,
+      "merged": false,
+      "files_changed": 6,
+      "insertions": 16,
+      "deletions": 6,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        },
+        {
+          "dir": "CHANGELOG.md",
+          "files": 1
+        },
+        {
+          "dir": "pyproject.toml",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        },
+        {
+          "dir": "uv.lock",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "release/beta.38",
+      "ref": "origin/release/beta.38",
+      "kind": "release",
+      "head_sha": "ce1f282e8c1f",
+      "last_subject": "release: 1.0.0-beta.38 (agent-window resilience + mobile-friendliness)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-08T23:38:51+01:00",
+      "merge_base": "d85c4bc2aa5d",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 256,
+      "merged": false,
+      "files_changed": 6,
+      "insertions": 17,
+      "deletions": 6,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        },
+        {
+          "dir": "CHANGELOG.md",
+          "files": 1
+        },
+        {
+          "dir": "pyproject.toml",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        },
+        {
+          "dir": "uv.lock",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "release/beta.40",
+      "ref": "origin/release/beta.40",
+      "kind": "release",
+      "head_sha": "0219a124ce5c",
+      "last_subject": "release: 1.0.0-beta.40 (consent project picker, PWA web-push, model-aware chat context budget)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-11T00:24:32+01:00",
+      "merge_base": "ebf0f51fb42b",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 235,
+      "merged": false,
+      "files_changed": 6,
+      "insertions": 15,
+      "deletions": 6,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        },
+        {
+          "dir": "CHANGELOG.md",
+          "files": 1
+        },
+        {
+          "dir": "pyproject.toml",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        },
+        {
+          "dir": "uv.lock",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "exec/tsk-bbdmdr",
+      "ref": "origin/exec/tsk-bbdmdr",
+      "kind": "exec-scratch",
+      "head_sha": "7321191f258b",
+      "last_subject": "Add taOSgo remote-relay Pro entitlement and relay authorize endpoints",
+      "last_author": "jaylfc",
+      "last_date": "2026-06-21T12:38:52+01:00",
+      "merge_base": "d93811a02064",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 889,
+      "merged": false,
+      "files_changed": 5,
+      "insertions": 159,
+      "deletions": 2,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 4
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/ai-stack-recovery",
+      "ref": "origin/feat/ai-stack-recovery",
+      "kind": "feat",
+      "head_sha": "7880d656bca5",
+      "last_subject": "feat(activity): recover/restart the local AI stack (#1743)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-08T21:22:58+01:00",
+      "merge_base": "098d64442788",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 261,
+      "merged": false,
+      "files_changed": 5,
+      "insertions": 504,
+      "deletions": 3,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 3
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/hub-slice-1",
+      "ref": "origin/feat/hub-slice-1",
+      "kind": "feat",
+      "head_sha": "1c30a76ef2d2",
+      "last_subject": "feat(hub): identity keypair keystore + directory registration proxy (slice 1)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-13T04:49:59+01:00",
+      "merge_base": "1eea646f87fb",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 215,
+      "merged": false,
+      "files_changed": 5,
+      "insertions": 546,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 3
+        },
+        {
+          "dir": "tests",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 2,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/downloaded-models-agent",
+      "ref": "origin/fix/downloaded-models-agent",
+      "kind": "fix",
+      "head_sha": "986745d2b0e6",
+      "last_subject": "fix(models): downloaded rkllama models register via /api/pull so the agent can select + deploy them; taOS-agent picker lists local models (#1599, #1600)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T00:59:42+01:00",
+      "merge_base": "876caa5f406d",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 439,
+      "merged": false,
+      "files_changed": 5,
+      "insertions": 177,
+      "deletions": 10,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 2
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        },
+        {
+          "dir": "desktop",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/models-delete-and-refresh",
+      "ref": "origin/fix/models-delete-and-refresh",
+      "kind": "fix",
+      "head_sha": "0a77a72ccc4a",
+      "last_subject": "fix(models): real delete endpoint + auto-refresh installed state after download (#1581, #1548)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T14:50:58+01:00",
+      "merge_base": "81994e6fe4b8",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 453,
+      "merged": false,
+      "files_changed": 5,
+      "insertions": 354,
+      "deletions": 4,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 3
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 2,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "release/beta.41",
+      "ref": "origin/release/beta.41",
+      "kind": "release",
+      "head_sha": "857420b6e9c5",
+      "last_subject": "chore(release): 1.0.0-beta.41",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-18T11:18:28+01:00",
+      "merge_base": "0e6e6fabf055",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 96,
+      "merged": false,
+      "files_changed": 5,
+      "insertions": 22,
+      "deletions": 4,
+      "top_dirs": [
+        {
+          "dir": "CHANGELOG.md",
+          "files": 1
+        },
+        {
+          "dir": "desktop",
+          "files": 1
+        },
+        {
+          "dir": "pyproject.toml",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        },
+        {
+          "dir": "uv.lock",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "release/beta.42",
+      "ref": "origin/release/beta.42",
+      "kind": "release",
+      "head_sha": "f140b17a7742",
+      "last_subject": "chore(release): v1.0.0-beta.42 version bump + changelog",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-20T15:12:46+01:00",
+      "merge_base": "c024d8071a11",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 50,
+      "merged": false,
+      "files_changed": 5,
+      "insertions": 31,
+      "deletions": 4,
+      "top_dirs": [
+        {
+          "dir": "CHANGELOG.md",
+          "files": 1
+        },
+        {
+          "dir": "desktop",
+          "files": 1
+        },
+        {
+          "dir": "pyproject.toml",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        },
+        {
+          "dir": "uv.lock",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/account-slice-4",
+      "ref": "origin/feat/account-slice-4",
+      "kind": "feat",
+      "head_sha": "e2c827b18223",
+      "last_subject": "feat(account): frontend types + Account panel split for username/subdomains (slice 4)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-12T22:40:05+01:00",
+      "merge_base": "9d006f476ab9",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 219,
+      "merged": false,
+      "files_changed": 4,
+      "insertions": 529,
+      "deletions": 33,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 4
+        }
+      ],
+      "absorbed_files": 4,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "feat/docreview-deeplink-registry",
+      "ref": "origin/feat/docreview-deeplink-registry",
+      "kind": "feat",
+      "head_sha": "7e42f16b394a",
+      "last_subject": "feat(projects): deep-link target registry (#1802 slice 2)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-15T11:30:42+01:00",
+      "merge_base": "70956abae7ba",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 200,
+      "merged": false,
+      "files_changed": 4,
+      "insertions": 210,
+      "deletions": 7,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 4
+        }
+      ],
+      "absorbed_files": 3,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/hailo-slice-1",
+      "ref": "origin/feat/hailo-slice-1",
+      "kind": "feat",
+      "head_sha": "39c5a123f6d5",
+      "last_subject": "feat(hailo): reserve port 7836 and map hailo-ollama llm-chat capability",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-12T15:17:00+01:00",
+      "merge_base": "1869e4e74818",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 223,
+      "merged": false,
+      "files_changed": 4,
+      "insertions": 25,
+      "deletions": 1,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 2
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 3,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/identity-followups",
+      "ref": "origin/fix/identity-followups",
+      "kind": "fix",
+      "head_sha": "3cb13d8a4a39",
+      "last_subject": "fix(projects): stop cleared Lead re-promotion + approve canvas scope adds membership (audit #4, #11)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-16T10:09:59+01:00",
+      "merge_base": "5d5dec328db5",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 171,
+      "merged": false,
+      "files_changed": 4,
+      "insertions": 273,
+      "deletions": 15,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 2
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/vram-reservation-1766",
+      "ref": "origin/fix/vram-reservation-1766",
+      "kind": "fix",
+      "head_sha": "747e24becb3e",
+      "last_subject": "fix(models): VRAM reservation TTL sweep + #1766 acceptance coverage",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-12T17:08:17+01:00",
+      "merge_base": "5c4afbbdf717",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 220,
+      "merged": false,
+      "files_changed": 4,
+      "insertions": 329,
+      "deletions": 26,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 2
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 3,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "exec/tsk-cpgdhh",
+      "ref": "origin/exec/tsk-cpgdhh",
+      "kind": "exec-scratch",
+      "head_sha": "c39c4dd57aae",
+      "last_subject": "feat(library): item card component with thumbnail, status, artifacts, collection link",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-21T21:03:17+00:00",
+      "merge_base": "3878ccb400c9",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 41,
+      "merged": false,
+      "files_changed": 3,
+      "insertions": 814,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/account-username-promo",
+      "ref": "origin/feat/account-username-promo",
+      "kind": "feat",
+      "head_sha": "a57deeca3f5a",
+      "last_subject": "feat(settings): frame taOS account for future features + reserve-your-username promo",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T15:58:07+01:00",
+      "merge_base": "1d32f3aef007",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 447,
+      "merged": false,
+      "files_changed": 3,
+      "insertions": 94,
+      "deletions": 3,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/agent-window-resilience",
+      "ref": "origin/feat/agent-window-resilience",
+      "kind": "feat",
+      "head_sha": "023ebb273b65",
+      "last_subject": "feat(agent-window): scrollbars and stall detection (#1741, #1742)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-08T21:23:07+01:00",
+      "merge_base": "098d64442788",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 261,
+      "merged": false,
+      "files_changed": 3,
+      "insertions": 249,
+      "deletions": 1,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 3
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/cli-account-recovery",
+      "ref": "origin/feat/cli-account-recovery",
+      "kind": "feat",
+      "head_sha": "7a887974609c",
+      "last_subject": "feat(cli): taos recover-password for offline local account recovery",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-08T18:30:17+01:00",
+      "merge_base": "11aa00bd1e40",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 264,
+      "merged": false,
+      "files_changed": 3,
+      "insertions": 183,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/hailo-slice-4",
+      "ref": "origin/feat/hailo-slice-4",
+      "kind": "feat",
+      "head_sha": "c3f99b104501",
+      "last_subject": "feat(hailo): slice 4 install-time gates for Hailo-10H (per design doc)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-13T04:52:20+01:00",
+      "merge_base": "1eea646f87fb",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 215,
+      "merged": false,
+      "files_changed": 3,
+      "insertions": 167,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "scripts",
+          "files": 2
+        },
+        {
+          "dir": "install.sh",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/invite-s3-a2a-stream",
+      "ref": "origin/feat/invite-s3-a2a-stream",
+      "kind": "feat",
+      "head_sha": "63c11ee5f3dc",
+      "last_subject": "feat(a2a): authenticated SSE stream proxy + since cursor (#1780 S3)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-16T19:06:36+01:00",
+      "merge_base": "f688239f3e41",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 163,
+      "merged": false,
+      "files_changed": 3,
+      "insertions": 292,
+      "deletions": 5,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 2,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/canvas-hardening",
+      "ref": "origin/fix/canvas-hardening",
+      "kind": "fix",
+      "head_sha": "54810855c336",
+      "last_subject": "fix(canvas): bound snapshot render dimensions + offload render + clamp element geometry (audit #1)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-16T10:08:11+01:00",
+      "merge_base": "5d5dec328db5",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 171,
+      "merged": false,
+      "files_changed": 3,
+      "insertions": 90,
+      "deletions": 1,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 3,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "fix/dock-wallpaper-merge-regression",
+      "ref": "origin/fix/dock-wallpaper-merge-regression",
+      "kind": "fix",
+      "head_sha": "28156dec8e68",
+      "last_subject": "test(settings): lock in dock/wallpaper partial-save isolation (#1603, #1601)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T21:17:32+01:00",
+      "merge_base": "61595e47dd4b",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 416,
+      "merged": false,
+      "files_changed": 3,
+      "insertions": 103,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 1
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 3,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "fix/framework-verified-tiers",
+      "ref": "origin/fix/framework-verified-tiers",
+      "kind": "fix",
+      "head_sha": "327f99c90245",
+      "last_subject": "fix(frameworks): verified_only returns tested+beta, not beta-only",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-18T04:06:13+01:00",
+      "merge_base": "16ac652bc776",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 103,
+      "merged": false,
+      "files_changed": 3,
+      "insertions": 23,
+      "deletions": 14,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 2,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/invite-burn-scope-validation",
+      "ref": "origin/fix/invite-burn-scope-validation",
+      "kind": "fix",
+      "head_sha": "df40676334b6",
+      "last_subject": "fix(invites): failed approve no longer burns the invite + validate scopes at mint (#1993)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-18T13:30:32+01:00",
+      "merge_base": "0e6e6fabf055",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 96,
+      "merged": false,
+      "files_changed": 3,
+      "insertions": 118,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 2
+        },
+        {
+          "dir": "tests",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/skill-exec-authz",
+      "ref": "origin/fix/skill-exec-authz",
+      "kind": "fix",
+      "head_sha": "aeab30d39481",
+      "last_subject": "fix(security): require admin or local-token auth for skill execution \u2014 closes non-admin RCE via code_exec (GHSA-h24f-gp4c-8qjm)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T09:59:58+01:00",
+      "merge_base": "7db32e4806fa",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 433,
+      "merged": false,
+      "files_changed": 3,
+      "insertions": 282,
+      "deletions": 2,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 2
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "docs/agent-coordination",
+      "ref": "origin/docs/agent-coordination",
+      "kind": "docs",
+      "head_sha": "c89b54e89a42",
+      "last_subject": "docs: add agent coordination guide for multi-agent build lane",
+      "last_author": "jaylfc",
+      "last_date": "2026-06-23T10:15:48+01:00",
+      "merge_base": "5ff6a390933a",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 962,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 86,
+      "deletions": 796,
+      "top_dirs": [
+        {
+          "dir": "docs",
+          "files": 1
+        },
+        {
+          "dir": "uv.lock",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/account-slice-5",
+      "ref": "origin/feat/account-slice-5",
+      "kind": "feat",
+      "head_sha": "86ebc1ff7ae8",
+      "last_subject": "feat(account): onboarding free username claim step (slice 5)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-13T03:19:10+01:00",
+      "merge_base": "a26607781e2f",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 217,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 287,
+      "deletions": 4,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/canvas-excalidraw-slice1",
+      "ref": "origin/feat/canvas-excalidraw-slice1",
+      "kind": "feat",
+      "head_sha": "51a1a61bce84",
+      "last_subject": "feat(canvas): CanvasElement to Excalidraw skeleton mapping (slice 1)",
+      "last_author": "jaylfc",
+      "last_date": "2026-06-23T15:18:34+01:00",
+      "merge_base": "98ed0e246761",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 679,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 252,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/npu-backend-one-tap-install",
+      "ref": "origin/feat/npu-backend-one-tap-install",
+      "kind": "feat",
+      "head_sha": "e0367538c5d4",
+      "last_subject": "feat(setup): one-tap NPU backend install from the checklist + notification",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T20:44:40+01:00",
+      "merge_base": "bd57a5d4ef99",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 442,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 189,
+      "deletions": 6,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/onboarding-cloud-account-step",
+      "ref": "origin/feat/onboarding-cloud-account-step",
+      "kind": "feat",
+      "head_sha": "19fc9e24ad31",
+      "last_subject": "feat(onboarding): optional taOS cloud-account step with reserve-username hint (#141)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T19:35:59+01:00",
+      "merge_base": "0211e234e3fe",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 444,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 139,
+      "deletions": 10,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/1724-searxng-secret-perms",
+      "ref": "origin/fix/1724-searxng-secret-perms",
+      "kind": "fix",
+      "head_sha": "471e366d05f9",
+      "last_subject": "fix(docker-installer): 0600 perms + validity guard on the persisted app secret",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-08T07:43:37+01:00",
+      "merge_base": "4308daf2cd89",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 269,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 27,
+      "deletions": 2,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 2,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "fix/1743-rewire-backend-services",
+      "ref": "origin/fix/1743-rewire-backend-services",
+      "kind": "fix",
+      "head_sha": "5f151bf7713f",
+      "last_subject": "refactor(system): derive #1743 restart targets from managed-backend contract (Phase 1.3)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-09T11:11:00+01:00",
+      "merge_base": "8e901b4581c1",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 251,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 160,
+      "deletions": 131,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 2,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "fix/canvas-note-colors",
+      "ref": "origin/fix/canvas-note-colors",
+      "kind": "fix",
+      "head_sha": "5eef7704c4d1",
+      "last_subject": "fix: map violet and red note colors to valid tldraw palette names",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-13T11:46:03+01:00",
+      "merge_base": "81f8d924e3e8",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 207,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 21,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/external-agent-members-section",
+      "ref": "origin/fix/external-agent-members-section",
+      "kind": "fix",
+      "head_sha": "f58197f144f1",
+      "last_subject": "fix(projects): show consent-flow external agents in the External section",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-11T01:15:05+01:00",
+      "merge_base": "5004a829b374",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 234,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 90,
+      "deletions": 1,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/github-app-key-semantic-conflict",
+      "ref": "origin/fix/github-app-key-semantic-conflict",
+      "kind": "fix",
+      "head_sha": "fc803bbcda1f",
+      "last_subject": "fix(github): resolve #2009/#1932 semantic conflict - app key comes from SecretsStore",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-19T12:15:34+01:00",
+      "merge_base": "91af53e1889c",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 66,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 13,
+      "deletions": 8,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 2,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "fix/hub-append-race",
+      "ref": "origin/fix/hub-append-race",
+      "kind": "fix",
+      "head_sha": "5dd3d601693d",
+      "last_subject": "fix(hub): serialize chain appends so racing posts are not orphaned",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-13T12:16:59+01:00",
+      "merge_base": "81f8d924e3e8",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 207,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 51,
+      "deletions": 12,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/rkllama-managed-service",
+      "ref": "origin/fix/rkllama-managed-service",
+      "kind": "fix",
+      "head_sha": "347c19cfcddb",
+      "last_subject": "fix(rknpu): a live rkllama port is not 'installed' unless it is a managed systemd service",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-09T00:47:05+01:00",
+      "merge_base": "dda9cce57cb3",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 255,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 22,
+      "deletions": 9,
+      "top_dirs": [
+        {
+          "dir": "scripts",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/settings-authz-guard",
+      "ref": "origin/fix/settings-authz-guard",
+      "kind": "fix",
+      "head_sha": "c911e23d66ee",
+      "last_subject": "fix(security): require admin or local-token auth on system settings router (GHSA-47g9-fwwp-hrfp)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T11:52:13+01:00",
+      "merge_base": "af2643f060f0",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 427,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 264,
+      "deletions": 2,
+      "top_dirs": [
+        {
+          "dir": "tests",
+          "files": 1
+        },
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/texteditor-create",
+      "ref": "origin/fix/texteditor-create",
+      "kind": "fix",
+      "head_sha": "cfcc4cf8db1f",
+      "last_subject": "fix(texteditor): restore create/save of notes and documents (#1584)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-03T14:44:01+01:00",
+      "merge_base": "81994e6fe4b8",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 453,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 69,
+      "deletions": 1,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/texteditor-focus",
+      "ref": "origin/fix/texteditor-focus",
+      "kind": "fix",
+      "head_sha": "2f321098e5b8",
+      "last_subject": "fix(texteditor): guard remaining randomUUID call sites; keep focus while typing (#1596)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T00:48:10+01:00",
+      "merge_base": "876caa5f406d",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 439,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 53,
+      "deletions": 13,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 2,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "fix/texteditor-focus-loss",
+      "ref": "origin/fix/texteditor-focus-loss",
+      "kind": "fix",
+      "head_sha": "6f5346ad8f15",
+      "last_subject": "fix(texteditor): stop focus loss per keystroke (#1596)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-04T00:49:22+01:00",
+      "merge_base": "876caa5f406d",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 439,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 64,
+      "deletions": 2,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/video-delete-confirm",
+      "ref": "origin/fix/video-delete-confirm",
+      "kind": "fix",
+      "head_sha": "3fc518c43920",
+      "last_subject": "Add confirm guard before video delete",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-14T00:54:20+01:00",
+      "merge_base": "a16da5f6dcbe",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 202,
+      "merged": false,
+      "files_changed": 2,
+      "insertions": 86,
+      "deletions": 2,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 2
+        }
+      ],
+      "absorbed_files": 2,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "dependabot/npm_and_yarn/desktop/npm_and_yarn-88fb2ca490",
+      "ref": "origin/dependabot/npm_and_yarn/desktop/npm_and_yarn-88fb2ca490",
+      "kind": "dependabot",
+      "head_sha": "09d697a919ad",
+      "last_subject": "chore(deps): bump immutable",
+      "last_author": "dependabot[bot]",
+      "last_date": "2026-07-21T19:23:06+00:00",
+      "merge_base": "7e4ca0eb7442",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 19,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 8,
+      "deletions": 8,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "docs/account-subdomain-design",
+      "ref": "origin/docs/account-subdomain-design",
+      "kind": "docs",
+      "head_sha": "2e75555f211f",
+      "last_subject": "docs(design): account model, free username plus paid chosen subdomains",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-12T14:36:17+01:00",
+      "merge_base": "04cdd09e5aea",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 226,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 310,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "docs",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "docs/dev-skill-pr-lifecycle",
+      "ref": "origin/docs/dev-skill-pr-lifecycle",
+      "kind": "docs",
+      "head_sha": "a47fb4c090c0",
+      "last_subject": "docs(skill): add PR lifecycle discipline - fold-first, rebase cadence, closure conventions",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-19T19:40:28+01:00",
+      "merge_base": "57630db80d82",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 60,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 54,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": ".claude",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "docs/doc-review-surface-design",
+      "ref": "origin/docs/doc-review-surface-design",
+      "kind": "docs",
+      "head_sha": "423e32a8c014",
+      "last_subject": "docs(design): document review surface, md reader + stamps + review chat",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-12T22:41:00+01:00",
+      "merge_base": "9d006f476ab9",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 219,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 558,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "docs",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "docs/hailo-backend-design",
+      "ref": "origin/docs/hailo-backend-design",
+      "kind": "docs",
+      "head_sha": "7a589db954b0",
+      "last_subject": "docs(design): Hailo-10H LLM backend, zero-touch install parity with RK3588",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-12T14:37:47+01:00",
+      "merge_base": "04cdd09e5aea",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 226,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 417,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "docs",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "docs/hub-social-design",
+      "ref": "origin/docs/hub-social-design",
+      "kind": "docs",
+      "head_sha": "9b8ba8e717fc",
+      "last_subject": "docs(design): hub.taos.my local-first P2P social network foundation",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-12T14:43:15+01:00",
+      "merge_base": "04cdd09e5aea",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 226,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 602,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "docs",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "docs/library-app-spec",
+      "ref": "origin/docs/library-app-spec",
+      "kind": "docs",
+      "head_sha": "76d5104110b2",
+      "last_subject": "docs(design): Library app spec - universal ingestion into memory and collections",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-20T09:48:42+01:00",
+      "merge_base": "54ba9824a085",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 56,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 145,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "docs",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "docs/project-elements-design",
+      "ref": "origin/docs/project-elements-design",
+      "kind": "docs",
+      "head_sha": "7dbfdaf56538",
+      "last_subject": "docs(design): Projects app nested elements, one project with typed elements",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-12T15:40:47+01:00",
+      "merge_base": "1869e4e74818",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 223,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 650,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "docs",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "docs/taostalk-slice1-spec",
+      "ref": "origin/docs/taostalk-slice1-spec",
+      "kind": "docs",
+      "head_sha": "d15a3f1ea158",
+      "last_subject": "docs(design): taOStalk slice 1 spec - Tier 0 push+poll session bridge (#1953)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-19T01:43:15+01:00",
+      "merge_base": "0d7673399341",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 85,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 289,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "docs",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "feat/opencrabs-deploy-install",
+      "ref": "origin/feat/opencrabs-deploy-install",
+      "kind": "feat",
+      "head_sha": "9e9cd147fcc1",
+      "last_subject": "feat(opencrabs): deploy install script (binary + LiteLLM provider + SSE bridge)",
+      "last_author": "jaylfc",
+      "last_date": "2026-06-29T03:33:59+01:00",
+      "merge_base": "5f2c91ee9dba",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 538,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 235,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "tinyagentos",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/hailo-pin-idempotency",
+      "ref": "origin/fix/hailo-pin-idempotency",
+      "kind": "fix",
+      "head_sha": "f3a29b4e4cb2",
+      "last_subject": "fix(hailo): correct re-install idempotency check + narrow the orphan reaper",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-16T10:13:08+01:00",
+      "merge_base": "5d5dec328db5",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 171,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 10,
+      "deletions": 2,
+      "top_dirs": [
+        {
+          "dir": "scripts",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/hailo-real-repo-build",
+      "ref": "origin/fix/hailo-real-repo-build",
+      "kind": "fix",
+      "head_sha": "6f7a72059623",
+      "last_subject": "fix(hailo): install from hailo_model_zoo_genai via cmake, not a nonexistent repo",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-16T17:54:08+01:00",
+      "merge_base": "02c767f9a9cc",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 165,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 41,
+      "deletions": 36,
+      "top_dirs": [
+        {
+          "dir": "scripts",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "fix/installer-chown-warn",
+      "ref": "origin/fix/installer-chown-warn",
+      "kind": "fix",
+      "head_sha": "01fe921c4599",
+      "last_subject": "fix(installer): do not abort the installer if the re-run chown partially fails",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-16T10:09:15+01:00",
+      "merge_base": "5d5dec328db5",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 171,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 5,
+      "deletions": 1,
+      "top_dirs": [
+        {
+          "dir": "scripts",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/rkllama-context-error-pin",
+      "ref": "origin/fix/rkllama-context-error-pin",
+      "kind": "fix",
+      "head_sha": "4f5210d25bcd",
+      "last_subject": "fix(install-rknpu): pin rkllama with structured context-overflow error (#1738)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-08T14:52:30+01:00",
+      "merge_base": "1d0724714ef0",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 266,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 2,
+      "deletions": 2,
+      "top_dirs": [
+        {
+          "dir": "scripts",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/rkllama-repin-1.3.0",
+      "ref": "origin/fix/rkllama-repin-1.3.0",
+      "kind": "fix",
+      "head_sha": "587f550d1bdb",
+      "last_subject": "fix(install-rknpu): pin rkllama to the 1.3.0 ref + guard the fork patches",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-09T17:17:31+01:00",
+      "merge_base": "71939f1f520d",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 249,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 17,
+      "deletions": 2,
+      "top_dirs": [
+        {
+          "dir": "scripts",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "gauge/kilo-secrets-test",
+      "ref": "origin/gauge/kilo-secrets-test",
+      "kind": "chore",
+      "head_sha": "efa8b15f4b92",
+      "last_subject": "test(secrets): add coverage for the Secrets app",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-11T01:29:30+01:00",
+      "merge_base": "5004a829b374",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 234,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 227,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "test/chess-app",
+      "ref": "origin/test/chess-app",
+      "kind": "test",
+      "head_sha": "a5ed61cc087c",
+      "last_subject": "test(chess): add vitest coverage for ChessApp",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-11T02:17:40+01:00",
+      "merge_base": "7a2f70a79629",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 231,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 176,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "test/imageviewer-app",
+      "ref": "origin/test/imageviewer-app",
+      "kind": "test",
+      "head_sha": "ef1aaafdaa0b",
+      "last_subject": "test(imageviewer): add vitest coverage for ImageViewerApp",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-11T02:19:19+01:00",
+      "merge_base": "7a2f70a79629",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 231,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 199,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "test/notes-app",
+      "ref": "origin/test/notes-app",
+      "kind": "test",
+      "head_sha": "35ceb7b421b0",
+      "last_subject": "test(notes): add vitest coverage for NotesApp/TodoApp mounted behavior",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-11T01:33:03+01:00",
+      "merge_base": "5004a829b374",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 234,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 204,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 1,
+      "fully_absorbed": true,
+      "note": "fully absorbed \u2014 identical content already present on base"
+    },
+    {
+      "branch": "test/slides-view",
+      "ref": "origin/test/slides-view",
+      "kind": "test",
+      "head_sha": "1029baeb2683",
+      "last_subject": "test(officestudio): add SlidesView component tests for add slide, reorder, and present mode",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-13T11:45:46+01:00",
+      "merge_base": "81f8d924e3e8",
+      "resolvable": true,
+      "ahead": 1,
+      "behind": 207,
+      "merged": false,
+      "files_changed": 1,
+      "insertions": 147,
+      "deletions": 0,
+      "top_dirs": [
+        {
+          "dir": "desktop",
+          "files": 1
+        }
+      ],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "chore/172-prune-agent-worktrees",
+      "ref": "origin/chore/172-prune-agent-worktrees",
+      "kind": "chore",
+      "head_sha": "3a6bfcffbe10",
+      "last_subject": "chore(scripts): safe prune policy for stale agent worktrees (#172)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-06T18:06:00+01:00",
+      "merge_base": "3a6bfcffbe10",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 350,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "chore/relicense-agpl-dual",
+      "ref": "origin/chore/relicense-agpl-dual",
+      "kind": "chore",
+      "head_sha": "8abeaf20efbf",
+      "last_subject": "chore(license): dual-license taOS as AGPL-3.0-or-later + commercial",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-07T22:11:29+01:00",
+      "merge_base": "8abeaf20efbf",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 282,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "docs/taosnet-current-state",
+      "ref": "origin/docs/taosnet-current-state",
+      "kind": "docs",
+      "head_sha": "45bd6275db7a",
+      "last_subject": "docs(taosnet): reconcile model-torrent-mesh design with the shipped closed swarm",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-08T00:13:58+01:00",
+      "merge_base": "45bd6275db7a",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 275,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/1675-gpu-lease-finish",
+      "ref": "origin/feat/1675-gpu-lease-finish",
+      "kind": "feat",
+      "head_sha": "e2926000d8da",
+      "last_subject": "fix(cluster): atomic lease claim + VRAM-unknown handling + review fixes; drop redundant model-archive (#893)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-06T19:00:58+01:00",
+      "merge_base": "e2926000d8da",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 343,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/apple-client-slice1",
+      "ref": "origin/feat/apple-client-slice1",
+      "kind": "feat",
+      "head_sha": "1328bf457062",
+      "last_subject": "fix(devices): fold Kilo review on #1671 (input caps, device cap, APNs sandbox, touch debounce)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-06T15:09:47+01:00",
+      "merge_base": "1328bf457062",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 359,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/lead-identity-base",
+      "ref": "origin/feat/lead-identity-base",
+      "kind": "feat",
+      "head_sha": "bffab44dfbfb",
+      "last_subject": "fix(canvas): fold adversarial review findings 1, 2, 4 into route gating",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-14T15:02:17+01:00",
+      "merge_base": "bffab44dfbfb",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 194,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/lead-identity-mw-allowlist",
+      "ref": "origin/feat/lead-identity-mw-allowlist",
+      "kind": "feat",
+      "head_sha": "be2ed6e948c2",
+      "last_subject": "fix(agents): escape the dot in the canvas snapshot allowlist regexes",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-14T13:50:39+01:00",
+      "merge_base": "be2ed6e948c2",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 198,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/lead-identity-route-gating",
+      "ref": "origin/feat/lead-identity-route-gating",
+      "kind": "feat",
+      "head_sha": "bffab44dfbfb",
+      "last_subject": "fix(canvas): fold adversarial review findings 1, 2, 4 into route gating",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-14T15:02:17+01:00",
+      "merge_base": "bffab44dfbfb",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 194,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/lead-identity-scope-vocab",
+      "ref": "origin/feat/lead-identity-scope-vocab",
+      "kind": "feat",
+      "head_sha": "81a84c474895",
+      "last_subject": "test(agents): update ConsentActions test to the new project-picker label",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-15T00:50:46+01:00",
+      "merge_base": "81a84c474895",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 196,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/taosnet-client-passkey",
+      "ref": "origin/feat/taosnet-client-passkey",
+      "kind": "feat",
+      "head_sha": "a6e29841fb34",
+      "last_subject": "feat(taosnet): client passkey + web-seed + torrent_url wiring, DHT off",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-07T23:51:38+01:00",
+      "merge_base": "a6e29841fb34",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 275,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/taosnet-license-classifier",
+      "ref": "origin/feat/taosnet-license-classifier",
+      "kind": "feat",
+      "head_sha": "cc2199d4e684",
+      "last_subject": "feat(taosnet): license-eligibility classifier for redistribution",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-07T22:28:22+01:00",
+      "merge_base": "cc2199d4e684",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 280,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "feat/unified-model-store-rkllama",
+      "ref": "origin/feat/unified-model-store-rkllama",
+      "kind": "feat",
+      "head_sha": "a27d2e757fd2",
+      "last_subject": "fix(rkllama): fold Kilo review on the unified-model-store slice (#1548)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-06T20:01:24+01:00",
+      "merge_base": "a27d2e757fd2",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 345,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/1548-scan-rkllama-service-dir",
+      "ref": "origin/fix/1548-scan-rkllama-service-dir",
+      "kind": "fix",
+      "head_sha": "516a6d9d331d",
+      "last_subject": "fix(models): use rkllama.service explicit unit in systemctl fallback (fold Kilo #1548)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-07T02:12:11+01:00",
+      "merge_base": "516a6d9d331d",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 329,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/1548-surface-rkllama-pull-error",
+      "ref": "origin/fix/1548-surface-rkllama-pull-error",
+      "kind": "fix",
+      "head_sha": "e7e717370636",
+      "last_subject": "refactor(rkllama): fold Kilo review on the pull-error parser (#1548)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-06T19:56:06+01:00",
+      "merge_base": "e7e717370636",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 347,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/1603-user-wallpaper-wins-over-theme",
+      "ref": "origin/fix/1603-user-wallpaper-wins-over-theme",
+      "kind": "fix",
+      "head_sha": "dc28af7787d1",
+      "last_subject": "fix(desktop): user's wallpaper pick wins over theme default on login (#1603)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-06T13:55:54+01:00",
+      "merge_base": "dc28af7787d1",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 367,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/1616-opencode-discovery",
+      "ref": "origin/fix/1616-opencode-discovery",
+      "kind": "fix",
+      "head_sha": "a7f26f81f22f",
+      "last_subject": "fix(agents): log when TAOS_OPENCODE_BIN is set but not executable (fold Kilo #1616)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-07T02:12:35+01:00",
+      "merge_base": "a7f26f81f22f",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 327,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/163-hide-admin-settings",
+      "ref": "origin/fix/163-hide-admin-settings",
+      "kind": "fix",
+      "head_sha": "fa9d1dc2e1b6",
+      "last_subject": "fix(doc-gate): exempt test files from structural rules (#171)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-06T17:18:00+01:00",
+      "merge_base": "fa9d1dc2e1b6",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 354,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/165-backup-scheduler-executor",
+      "ref": "origin/fix/165-backup-scheduler-executor",
+      "kind": "fix",
+      "head_sha": "9f86e3f0a3ab",
+      "last_subject": "fix(scheduler): execute due scheduled tasks incl. auto-backup, allow-list dispatch (#165)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-06T18:01:38+01:00",
+      "merge_base": "9f86e3f0a3ab",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 350,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/1668-weather-csp-open-meteo",
+      "ref": "origin/fix/1668-weather-csp-open-meteo",
+      "kind": "fix",
+      "head_sha": "f229551d651b",
+      "last_subject": "fix(weather): allow open-meteo origins in CSP connect-src (#1668)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-06T13:31:06+01:00",
+      "merge_base": "f229551d651b",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 367,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/1686-persist-key-discard",
+      "ref": "origin/fix/1686-persist-key-discard",
+      "kind": "fix",
+      "head_sha": "f50456038582",
+      "last_subject": "fix(agents): persist the stale-key discard (fold Kilo review on #1686)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-06T23:36:49+01:00",
+      "merge_base": "f50456038582",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 330,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/1697-rkllama-provider-port",
+      "ref": "origin/fix/1697-rkllama-provider-port",
+      "kind": "fix",
+      "head_sha": "7540ac36aef8",
+      "last_subject": "fix(config): heal stale rkllama provider port :8080 -> :7833 on load (#1697)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-07T00:52:58+01:00",
+      "merge_base": "7540ac36aef8",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 331,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/173-npm-dependabot-overrides",
+      "ref": "origin/fix/173-npm-dependabot-overrides",
+      "kind": "fix",
+      "head_sha": "40f652728626",
+      "last_subject": "fix(deps): override lodash-es/uuid/nanoid to clear Dependabot alerts (#173)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-06T16:45:37+01:00",
+      "merge_base": "40f652728626",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 355,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/174-decision-routing-dedup",
+      "ref": "origin/fix/174-decision-routing-dedup",
+      "kind": "fix",
+      "head_sha": "9571076b4a87",
+      "last_subject": "fix(governance): fold Kilo review on #1667 (no grant leak + honest exec message)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-06T12:04:18+01:00",
+      "merge_base": "9571076b4a87",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 369,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/bump-rkllama-pin-chat-fix",
+      "ref": "origin/fix/bump-rkllama-pin-chat-fix",
+      "kind": "fix",
+      "head_sha": "b3225847b745",
+      "last_subject": "fix(rkllama): bump pinned rkllama ref to main HEAD for the /api/chat fix (#1710)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-07T18:52:10+01:00",
+      "merge_base": "b3225847b745",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 294,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/delegation-org-hardening",
+      "ref": "origin/fix/delegation-org-hardening",
+      "kind": "fix",
+      "head_sha": "8b9a6a2bc740",
+      "last_subject": "fix(governance): create _reporting_lock at construction, not in init()",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-07T11:43:31+01:00",
+      "merge_base": "8b9a6a2bc740",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 305,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/gpu-lease-auth-hardening",
+      "ref": "origin/fix/gpu-lease-auth-hardening",
+      "kind": "fix",
+      "head_sha": "19be613286ce",
+      "last_subject": "fix(cluster): authenticate GPU lease endpoints + validate inputs + widen ids",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-07T10:51:55+01:00",
+      "merge_base": "19be613286ce",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 306,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/retro-hygiene-heartbeat-apns",
+      "ref": "origin/fix/retro-hygiene-heartbeat-apns",
+      "kind": "fix",
+      "head_sha": "32460d1404ef",
+      "last_subject": "fix: fold Kilo review WARNINGs on retro-hygiene PR",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-07T13:59:30+01:00",
+      "merge_base": "32460d1404ef",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 300,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "fix/rkllama-backend-name-registry-match",
+      "ref": "origin/fix/rkllama-backend-name-registry-match",
+      "kind": "fix",
+      "head_sha": "12bc2d6f5bee",
+      "last_subject": "fix(config): rename rkllama backend local-npu to local-rkllama so installed models resolve (#1710)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-07T18:04:28+01:00",
+      "merge_base": "12bc2d6f5bee",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 294,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "master",
+      "ref": "origin/master",
+      "kind": "other",
+      "head_sha": "9920df5baad0",
+      "last_subject": "Update README.md",
+      "last_author": "sustilliano",
+      "last_date": "2026-07-23T16:22:12-07:00",
+      "merge_base": "9920df5baad0",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 18,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "release/1.0.0-beta.32",
+      "ref": "origin/release/1.0.0-beta.32",
+      "kind": "release",
+      "head_sha": "d936325437b8",
+      "last_subject": "release: 1.0.0-beta.32 (Weather search fix, wallpaper-persistence fix, Apple client foundation)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-06T15:43:50+01:00",
+      "merge_base": "d936325437b8",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 357,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "release/1.0.0-beta.33",
+      "ref": "origin/release/1.0.0-beta.33",
+      "kind": "release",
+      "head_sha": "0ae6690955e4",
+      "last_subject": "release: 1.0.0-beta.33 (rkllama unified model store + #1548 fix, GPU-lease coordination, scheduler execution)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-06T20:49:18+01:00",
+      "merge_base": "0ae6690955e4",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 333,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "release/1.0.0-beta.34",
+      "ref": "origin/release/1.0.0-beta.34",
+      "kind": "release",
+      "head_sha": "07b8e9c774a7",
+      "last_subject": "release: 1.0.0-beta.34 (rkllama model discovery + provider port heal for existing installs, opencode discovery, agent key persist)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-07T02:43:20+01:00",
+      "merge_base": "07b8e9c774a7",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 316,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "release/1.0.0-beta.35",
+      "ref": "origin/release/1.0.0-beta.35",
+      "kind": "release",
+      "head_sha": "b0d882ed67b0",
+      "last_subject": "release: 1.0.0-beta.35 (rkllama agent chat fix #1710, copy/select messages, update badge, cluster GPU-lease auth)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-07T21:28:10+01:00",
+      "merge_base": "b0d882ed67b0",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 284,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "robotics-edition",
+      "ref": "origin/robotics-edition",
+      "kind": "other",
+      "head_sha": "6332e38f355f",
+      "last_subject": "docs(design): beta.44 comparison + adoption record",
+      "last_author": "sustilliano",
+      "last_date": "2026-07-24T07:09:21+00:00",
+      "merge_base": "6332e38f355f",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 0,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": "is the base branch itself"
+    },
+    {
+      "branch": "sync/dev-to-master",
+      "ref": "origin/sync/dev-to-master",
+      "kind": "sync",
+      "head_sha": "5bde04be5d0a",
+      "last_subject": "Merge dev into master: land identity epic + audit fixes + all unreleased work",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-16T10:53:11+01:00",
+      "merge_base": "5bde04be5d0a",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 157,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "sync/dev-to-master-2",
+      "ref": "origin/sync/dev-to-master-2",
+      "kind": "sync",
+      "head_sha": "8e3b2c93da13",
+      "last_subject": "Merge remote-tracking branch 'origin/dev' into sync/dev-to-master-2",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-16T11:38:01+01:00",
+      "merge_base": "8e3b2c93da13",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 152,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "sync/dev-to-master-beta41",
+      "ref": "origin/sync/dev-to-master-beta41",
+      "kind": "sync",
+      "head_sha": "04d97f310591",
+      "last_subject": "Merge dev into master: v1.0.0-beta.41",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-18T18:22:28+01:00",
+      "merge_base": "04d97f310591",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 76,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "sync/dev-to-master-beta42",
+      "ref": "origin/sync/dev-to-master-beta42",
+      "kind": "sync",
+      "head_sha": "e2d931d3cda8",
+      "last_subject": "chore(release): v1.0.0-beta.42 version bump + changelog (#2061)",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-20T16:31:28+01:00",
+      "merge_base": "e2d931d3cda8",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 49,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "sync/dev-to-master-beta43",
+      "ref": "origin/sync/dev-to-master-beta43",
+      "kind": "sync",
+      "head_sha": "61a076956b2b",
+      "last_subject": "Merge dev into master: v1.0.0-beta.43",
+      "last_author": "jaylfc",
+      "last_date": "2026-07-21T18:40:28+00:00",
+      "merge_base": "61a076956b2b",
+      "resolvable": true,
+      "ahead": 0,
+      "behind": 20,
+      "merged": true,
+      "files_changed": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "top_dirs": [],
+      "absorbed_files": 0,
+      "fully_absorbed": false,
+      "note": ""
+    },
+    {
+      "branch": "cla-signatures",
+      "ref": "origin/cla-signatures",
+      "kind": "other",
+      "head_sha": "3a5cc51581eb",
+      "last_subject": "@hognek has signed the CLA in jaylfc/taOS#1686",
+      "last_author": "github-actions[bot]",
+      "last_date": "2026-07-06T20:25:52+00:00",
+      "merge_base": null,
+      "resolvable": false,
+      "ahead": null,
+      "behind": null,
+      "merged": false,
+      "files_changed": null,
+      "insertions": null,
+      "deletions": null,
+      "top_dirs": [],
+      "note": "unrelated/deep \u2014 no common ancestor found"
+    }
+  ]
+}
