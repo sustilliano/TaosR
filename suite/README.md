@@ -4,10 +4,23 @@ The composition overlay that brings up **taOS** (server/platform) and
 **open-cowork** (`sustilliano/jcloudwork`, the desktop client) as one
 environment — without modifying either repo's core.
 
-This is the non-destructive combine proven safe by the pk-memory overlap
-matrix (`docs/design/suite-combination-plan.md`): the two repos share
-**0.000 content / 0.000 paths / 0.000 routes**, so they *compose* rather than
-merge. This overlay owns only orchestration + first-run wiring.
+## How this was built (pk-client, from two separate projects)
+
+This overlay was **derived with the planekey pk-client toolchain**, not
+hand-guessed. Two independent repositories — `sustilliano/taosr` (a Python
+self-hosted agent platform) and `sustilliano/jcloudwork` (a TypeScript/
+Electron desktop app, forked from OpenCoworkAI's open-cowork) — were run
+through `pk-memory memory matrix` (the hash-tensor overlap tool) as two
+layers. The measured pairwise overlap was **0.000 content / 0.000 paths /
+0.000 routes / 0 shared hashes**: the projects are disjoint on every axis
+pk-client measures (taOS owns all 1004 HTTP routes; cowork owns 0).
+
+That evidence is what makes this a *composition*, not a merge — there is
+nothing to overwrite, so the combine is non-destructive by construction.
+`graft-plan` (pk-client's same-file version-dedup planner) was inapplicable
+at 0 path overlap. Full analysis + the raw matrix: `docs/design/
+suite-combination-plan.md` and `reports/suite-matrix.md`. This overlay owns
+only orchestration + first-run wiring across the two projects.
 
 ## Layout
 
