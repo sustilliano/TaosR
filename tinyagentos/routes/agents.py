@@ -462,6 +462,11 @@ class DeployAgentRequest(BaseModel):
     soul_md: str = ""
     agent_md: str = ""
     memory_plugin: str | None = "taosmd"
+    # Memory planes selected in the deploy wizard (taosmd/tmrfs/pk-trust).
+    # "taosmd" is the always-on default; the deployer injects env +
+    # best-effort attaches the matching MCP plugins. See
+    # docs/design/memory-systems-integration.md.
+    memory_systems: list[str] = ["taosmd"]
     # Per-agent override for taOSmd device + tier. None → use global default
     # from data_dir/taosmd_default.json set by the memory wizard.
     memory_config: dict | None = None
@@ -600,6 +605,7 @@ async def deploy_agent_endpoint(request: Request, body: DeployAgentRequest):
         new_agent["soul_md"] = body.soul_md
         new_agent["agent_md"] = body.agent_md
         new_agent["memory_plugin"] = body.memory_plugin
+        new_agent["memory_systems"] = body.memory_systems
         new_agent["memory_config"] = body.memory_config
         new_agent["source_persona_id"] = body.source_persona_id
         new_agent["migrated_to_v2_personas"] = True
@@ -654,6 +660,11 @@ async def deploy_agent_endpoint(request: Request, body: DeployAgentRequest):
                     secrets_store=secrets_store,
                     remote=deploy_remote,
                     taos_host=deploy_taos_host,
+                    memory_systems=body.memory_systems,
+                    # Enables best-effort attach of the tmrfs-memory / pk-trust
+                    # MCP plugins for the selected planes; skip-with-log if a
+                    # plugin isn't registered, so a deploy never fails on it.
+                    mcp_store=getattr(request.app.state, "mcp_store", None),
                 ))
                 agent = find_agent(config, body.name)
                 if result.get("success"):

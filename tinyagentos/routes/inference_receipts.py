@@ -62,6 +62,10 @@ class InferenceReceiptIn(BaseModel):
 
     ``signature`` is deliberately absent: it stays NULL in Bean-1 (agent-held
     Ed25519 signing is Bean-2+).
+
+    ``thought_id`` (Track 3) is the optional cross-tier link: the TMrFS
+    thought id this turn produced, if the callback auto-captured one. It is
+    not part of the signed canonical bytes (see inference_receipt_store.py).
     """
     model_id: str
     prompt_hash: str
@@ -72,6 +76,7 @@ class InferenceReceiptIn(BaseModel):
     started_at: str | None = None
     completed_at: str | None = None
     status: str = "success"
+    thought_id: str | None = None
 
 
 @router.post("/api/agents/{name}/inference-receipts")
@@ -102,6 +107,7 @@ async def post_inference_receipt(name: str, request: Request, body: InferenceRec
         completed_at=body.completed_at,
         status=body.status,
         signer=lambda receipt: bean_keystore.sign_receipt(name, data_dir, receipt),
+        thought_id=body.thought_id,
     )
     return {"agent_name": name, "inference_id": inference_id}
 

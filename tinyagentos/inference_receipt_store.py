@@ -55,13 +55,15 @@ CREATE TABLE IF NOT EXISTS inference (
     started_at        TEXT,
     completed_at      TEXT,
     status            TEXT DEFAULT 'success',
-    signature         TEXT
+    signature         TEXT,
+    thought_id        TEXT
 );
 """
 
 _COLS = (
     "inference_id, trace_id, model_id, prompt_hash, output_hash, "
-    "prompt_tokens, completion_tokens, started_at, completed_at, status, signature"
+    "prompt_tokens, completion_tokens, started_at, completed_at, status, signature, "
+    "thought_id"
 )
 
 
@@ -82,6 +84,7 @@ def _row_to_receipt(row: aiosqlite.Row) -> dict:
         "completed_at": row["completed_at"],
         "status": row["status"],
         "signature": row["signature"],
+        "thought_id": row["thought_id"],
     }
 
 
@@ -147,6 +150,7 @@ class InferenceReceiptStore(BaseStore):
         status: str = "success",
         signature: str | None = None,
         signer: "Callable[[dict], str] | None" = None,
+        thought_id: str | None = None,
     ) -> str:
         """Append a receipt row and return its generated inference_id.
 
@@ -167,6 +171,19 @@ class InferenceReceiptStore(BaseStore):
         Omit both and the column stays NULL exactly as in Bean-1. This store
         never signs on its own; ``signer`` is supplied by the caller (the
         receipt POST route wires in the per-agent key via ``bean_keystore``).
+
+        ``thought_id`` (Track 3, cross-tier link) optionally names the TMrFS
+        thought this turn produced - "what the model did" -> "what it was
+        thinking about" (docs/design/tmrfs-memory-tier.md). It is
+        deliberately NOT included in the dict passed to ``signer``:
+        ``bean_keystore.canonical_receipt_bytes`` signs a fixed field set
+        that predates this column, and a thought_id is a post-hoc
+        cross-reference rather than part of the receipt's core identity, so
+        adding it there would either be silently ignored (safe but
+        confusing) or require widening the signed field set (a Bean-2
+        compatibility change out of scope here). The column is still stored
+        and returned like any other field - only the *signature* leaves it
+        uncovered.
         """
         if self._db is None:
             raise RuntimeError("InferenceReceiptStore not initialised - call init() first")
@@ -189,11 +206,11 @@ class InferenceReceiptStore(BaseStore):
                 logger.warning("inference_receipt_store: signing failed, storing unsigned: %s", exc)
                 signature = None
         await self._db.execute(
-            f"INSERT INTO inference ({_COLS}) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            f"INSERT INTO inference ({_COLS}) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             (
                 inference_id, trace_id, model_id, prompt_hash, output_hash,
                 prompt_tokens, completion_tokens, started_at, completed_at, status,
-                signature,
+                signature, thought_id,
             ),
         )
         await self._db.commit()

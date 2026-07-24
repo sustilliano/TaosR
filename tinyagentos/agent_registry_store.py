@@ -158,6 +158,31 @@ async def _migration_v3_add_org_fields(conn) -> None:
     await conn.commit()
 
 
+async def _migration_v5_add_memory_systems(conn) -> None:
+    """Add memory_systems column (idempotent), defaulting to ["taosmd"].
+
+    Per docs/design/memory-systems-integration.md: an agent carries a
+    memory_systems selection drawn from {"taosmd","tmrfs","pk-trust"}, stored
+    as a JSON list of strings ("taosmd" is native and always effectively on).
+    Existing rows (deployed before this column existed) read back the
+    always-on default via the column's SQL DEFAULT, so no backfill UPDATE is
+    needed — unlike title/reports_to (NULL-default) or status (needs a
+    backfill from revoked_at), a fresh row's default is already correct.
+    """
+    existing_cols = {
+        row[1]
+        for row in await (
+            await conn.execute("PRAGMA table_info(agent_registry)")
+        ).fetchall()
+    }
+    if "memory_systems" not in existing_cols:
+        await conn.execute(
+            "ALTER TABLE agent_registry ADD COLUMN memory_systems TEXT "
+            "NOT NULL DEFAULT '[\"taosmd\"]'"
+        )
+    await conn.commit()
+
+
 async def _migration_v4_dedupe_active_handles(conn) -> None:
     """Blank duplicate active handles so ux_agent_active_handle can be created.
 
@@ -382,6 +407,14 @@ def _row_to_dict(row: aiosqlite.Row) -> dict:
         d["capabilities"] = json.loads(d.get("capabilities") or "[]")
     except (ValueError, TypeError):
         d["capabilities"] = []
+    # Deserialise memory_systems JSON list; a row from before the column
+    # existed reads back the SQL column default ('["taosmd"]'), and any
+    # malformed/missing value falls back to the same always-on default.
+    try:
+        parsed = json.loads(d.get("memory_systems") or '["taosmd"]')
+        d["memory_systems"] = parsed if parsed else ["taosmd"]
+    except (ValueError, TypeError):
+        d["memory_systems"] = ["taosmd"]
     return d
 
 
@@ -417,6 +450,7 @@ class AgentRegistryStore(BaseStore):
         # Dedupe BEFORE the index so a pre-invariant DB with duplicate active
         # handles cannot make the CREATE UNIQUE INDEX (hence boot) fail.
         await _migration_v4_dedupe_active_handles(self._db)
+        await _migration_v5_add_memory_systems(self._db)
         # Created after the status migration so the partial index's WHERE clause
         # can reference the status column on the pre-status migration path.
         # Guard the index creation too: if some path we did not anticipate still
@@ -447,6 +481,7 @@ class AgentRegistryStore(BaseStore):
         title: Optional[str] = None,
         reports_to: Optional[str] = None,
         capabilities: Optional[list[str]] = None,
+        memory_systems: Optional[list[str]] = None,
     ) -> dict:
         """Mint a canonical_id, persist the record, and return it.
 
@@ -454,12 +489,18 @@ class AgentRegistryStore(BaseStore):
         not exist yet, so it cannot be part of an existing cycle) - use
         ``set_reporting`` after registration to validate a manager change.
 
+        ``memory_systems`` is the agent's memory-plane selection (a subset of
+        {"taosmd","tmrfs","pk-trust"} — see
+        docs/design/memory-systems-integration.md). Defaults to ``["taosmd"]``
+        (the always-on conversational plane) when omitted or empty.
+
         Raises ``RuntimeError`` if the store is not initialised.
         """
         if self._db is None:
             raise RuntimeError("AgentRegistryStore not initialised - call init() first")
 
         capabilities = capabilities or []
+        memory_systems = memory_systems or ["taosmd"]
         now_utc = datetime.now(timezone.utc)
         slug = _slugify(display_name) if display_name else _slugify(framework)
         base_id = mint_canonical_id(slug, now_utc)
@@ -482,16 +523,19 @@ class AgentRegistryStore(BaseStore):
             canonical_id = f"{base_id}-{suffix_n:02x}"
 
         caps_json = json.dumps(capabilities)
+        memory_systems_json = json.dumps(memory_systems)
         initial_status = "pending" if origin == "external-selfjoin" else "active"
         await self._db.execute(
             """
             INSERT INTO agent_registry
                 (canonical_id, display_name, framework, user_id, origin,
-                 handle, role, title, reports_to, capabilities, created_ts, status)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                 handle, role, title, reports_to, capabilities, memory_systems,
+                 created_ts, status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (canonical_id, display_name, framework, user_id, origin,
-             handle, role, title, reports_to, caps_json, created_ts, initial_status),
+             handle, role, title, reports_to, caps_json, memory_systems_json,
+             created_ts, initial_status),
         )
         await self._db.commit()
 

@@ -24,6 +24,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from tinyagentos.secrets import SecretsStore
+    from tinyagentos.mcp.registry import MCPServerStore
 
 from tinyagentos.agent_image import (
     GENERIC_BASE_ALIAS,
@@ -110,6 +111,37 @@ AGENTS_MD_PATHS: dict[str, str] = {
     "hermes": "/root/.hermes/AGENTS.md",
 }
 
+# ---------------------------------------------------------------------------
+# Memory-plane selection (docs/design/memory-systems-integration.md).
+# ---------------------------------------------------------------------------
+
+# Maps a memory_systems entry to the MCP plugin id (app-catalog/plugins/<id>)
+# that implements it. "taosmd" is native/always-on and has no plugin, so it
+# is intentionally absent here.
+_MEMORY_PLUGIN_IDS: dict[str, str] = {
+    "tmrfs": "tmrfs-memory",
+    "pk-trust": "pk-trust-mcp",
+}
+
+
+def _memory_env(memory_systems: list[str] | None, name: str) -> dict[str, str]:
+    """Build the memory-plane container env vars for agent *name*.
+
+    Always sets ``TAOS_MEMORY_SYSTEMS`` (comma-joined list; falls back to
+    ``["taosmd"]`` when *memory_systems* is empty/None, matching the
+    always-on default). When ``"tmrfs"`` is selected, also sets
+    ``TAOS_TMRFS_AGENT=<name>`` so the tmrfs-memory plugin auto-namespaces
+    this agent's thoughts. Deliberately does NOT set ``TAOS_TMRFS_URL`` —
+    that stays the plugin manifest's default unless the caller has an
+    explicit override (see deploy_agent's TAOS_TMRFS_URL handling), so this
+    helper never hardcodes a bridge URL.
+    """
+    systems = memory_systems or ["taosmd"]
+    out: dict[str, str] = {"TAOS_MEMORY_SYSTEMS": ",".join(systems)}
+    if "tmrfs" in systems:
+        out["TAOS_TMRFS_AGENT"] = name
+    return out
+
 
 def _splice_taosmd_block(existing: str, new_rules: str) -> str:
     """Insert or replace the taosmd-rules sentinel block in *existing*,
@@ -169,6 +201,18 @@ class DeployRequest:
     # the container environment. Optional (None) so existing callers/tests
     # are unaffected. Typed loosely to avoid a runtime import cycle.
     secrets_store: "SecretsStore | None" = None
+    # Memory-plane selection (docs/design/memory-systems-integration.md): a
+    # subset of {"taosmd","tmrfs","pk-trust"}. "taosmd" is native and always
+    # effectively on; the selection governs the two optional planes. Always
+    # persisted on the agent registry row regardless of whether the matching
+    # MCP plugin is installed yet.
+    memory_systems: list[str] = field(default_factory=lambda: ["taosmd"])
+    # Optional MCP server store handle. When set, deploy_agent best-effort
+    # attaches the tmrfs-memory / pk-trust-mcp plugin to this agent's scope
+    # for each selected optional memory plane. None (default) skips the
+    # attach step entirely, so existing callers/tests are unaffected — the
+    # env injection (the guaranteed deliverable) still happens either way.
+    mcp_store: "MCPServerStore | None" = None
 
 
 async def deploy_agent(req: DeployRequest) -> dict:
@@ -321,6 +365,37 @@ async def deploy_agent(req: DeployRequest) -> dict:
     env["TAOS_MODEL"] = req.model or ""
     # Fallback models as comma-separated list for install.sh.
     env["TAOS_FALLBACK_MODELS"] = ",".join(req.fallback_models or [])
+
+    # Memory-plane selection — TAOS_MEMORY_SYSTEMS always; TAOS_TMRFS_AGENT
+    # (slug-namespacing) when "tmrfs" is selected. See _memory_env docstring.
+    env.update(_memory_env(req.memory_systems, req.name))
+    if "tmrfs" in (req.memory_systems or ["taosmd"]):
+        # Only override the plugin manifest's TAOS_TMRFS_URL default when an
+        # explicit value is actually configured — never hardcode a guess.
+        _tmrfs_url = os.environ.get("TAOS_TMRFS_URL") or (
+            (req.extra_config or {}).get("tmrfs_url") if req.extra_config else None
+        )
+        if _tmrfs_url:
+            env["TAOS_TMRFS_URL"] = _tmrfs_url
+
+    # Best-effort MCP plugin attach for the selected optional memory planes.
+    # A deploy must never fail because a plugin isn't installed/registered
+    # yet — the selection is persisted on the agent regardless (see
+    # agent_registry_store.py), so it stays surfaceable either way.
+    if req.mcp_store is not None:
+        for _system, _plugin_id in _MEMORY_PLUGIN_IDS.items():
+            if _system not in (req.memory_systems or []):
+                continue
+            try:
+                await req.mcp_store.add_attachment(_plugin_id, "agent", req.name)
+                steps.append(f"mcp_attach_{_plugin_id}")
+            except Exception:
+                logger.warning(
+                    "Deploy %s: could not attach MCP plugin %r for memory "
+                    "system %r (not installed/registered yet?) — continuing "
+                    "without it",
+                    req.name, _plugin_id, _system, exc_info=True,
+                )
 
     # Trace capture — local auth token + trace API URL.
     try:

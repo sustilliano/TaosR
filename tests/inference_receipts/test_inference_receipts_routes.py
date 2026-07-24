@@ -76,6 +76,27 @@ class TestInferenceReceiptRoutes:
         assert body["receipts"][0]["inference_id"] == inf_id
         assert body["receipts"][0]["prompt_hash"] == "a" * 64
 
+    async def test_post_with_thought_id_stored_and_returned(self, app_client):
+        _, client = app_client
+        with_thought = dict(RECEIPT, thought_id="scout-1:th-abc123")
+        resp = await client.post("/api/agents/scout-1/inference-receipts", json=with_thought)
+        assert resp.status_code == 200
+        inf_id = resp.json()["inference_id"]
+
+        resp = await client.get("/api/agents/scout-1/inference-receipts")
+        body = resp.json()
+        assert body["receipts"][0]["inference_id"] == inf_id
+        assert body["receipts"][0]["thought_id"] == "scout-1:th-abc123"
+
+    async def test_post_without_thought_id_defaults_none(self, app_client):
+        _, client = app_client
+        resp = await client.post("/api/agents/scout-1/inference-receipts", json=RECEIPT)
+        assert resp.status_code == 200
+
+        resp = await client.get("/api/agents/scout-1/inference-receipts")
+        body = resp.json()
+        assert body["receipts"][0]["thought_id"] is None
+
     async def test_get_empty_agent_is_zero_not_404(self, app_client):
         _, client = app_client
         # Unlike provenance, a fresh receipt ledger is a valid empty ledger.

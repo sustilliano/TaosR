@@ -207,6 +207,78 @@ try:
             slug = _slug_from_alias(key_alias)
             return slug, str(kwargs.get("model") or "")
 
+        async def _tmrfs_store(self, url: str, payload: dict) -> dict | None:
+            """POST a thought to the TMrFS bridge; return its parsed JSON body.
+
+            Split out from ``_maybe_capture_thought`` so the HTTP boundary can
+            be stubbed in tests the same way ``self._post`` is stubbed for the
+            trace/receipt POSTs. Returns ``None`` on any failure (network,
+            non-JSON body, bridge down) — the caller treats that as "no
+            thought captured" and proceeds fail-open.
+            """
+            try:
+                import httpx
+                async with httpx.AsyncClient(timeout=3) as client:
+                    resp = await client.post(url, json=payload)
+                    return resp.json()
+            except Exception as exc:
+                logger.warning("litellm_callback: tmrfs store POST to %s failed: %s", url, exc)
+                return None
+
+        async def _maybe_capture_thought(
+            self,
+            slug: str,
+            model: str,
+            kwargs: dict,
+            status: str,
+        ) -> str | None:
+            """Track 3 auto-capture: best-effort TMrFS thought for this turn.
+
+            Gate: only runs when BOTH ``TAOS_TMRFS_AGENT`` (the agent has the
+            TMrFS memory plane attached, per memory-systems-integration.md)
+            and ``TAOS_TMRFS_URL`` (a bridge is actually reachable) are set.
+            Read from the environment on every call (not cached at __init__)
+            so behaviour tracks the current process env exactly like
+            ``_read_local_token`` does. When either is unset, this returns
+            ``None`` immediately and does nothing else — behaviour is then
+            *exactly* Bean-1 (no thought, no extra network call).
+
+            Privacy note: the stored "thought" is a compact TAG, not a
+            transcript excerpt — ``model=<model> status=<status>``. TMrFS is
+            a second durable store with its own recall surface
+            (``tmrfs_query``); mirroring raw prompt/response text into it
+            would quietly widen the retention/redaction posture the hash-only
+            inference receipt deliberately holds (manifest mode — see
+            silicon-bean-integration.md). A tag is enough to make the thought
+            findable/linkable without that risk, so we prefer it over even a
+            truncated prompt excerpt.
+
+            Fail-open: any error (network, bad response, TMrFS down) is
+            caught and logged; the caller still emits the inference receipt,
+            just without a thought_id.
+            """
+            tmrfs_agent = os.environ.get("TAOS_TMRFS_AGENT", "").strip()
+            tmrfs_url = os.environ.get("TAOS_TMRFS_URL", "").strip()
+            if not tmrfs_agent or not tmrfs_url:
+                return None
+            try:
+                trace_id = str(kwargs.get("litellm_call_id") or "") or None
+                name = f"{slug}:{trace_id or int(time.time() * 1000)}"
+                payload = {
+                    "name": name,
+                    "text": f"model={model} status={status}",
+                    "metadata": {"agent": slug, "model": model, "status": status},
+                }
+                data = await self._tmrfs_store(f"{tmrfs_url.rstrip('/')}/tmrfs/store", payload)
+                if isinstance(data, dict):
+                    thought_id = data.get("name") or data.get("id")
+                    if isinstance(thought_id, str) and thought_id:
+                        return thought_id
+                return None
+            except Exception as exc:
+                logger.warning("litellm_callback: tmrfs auto-capture failed: %s", exc)
+                return None
+
         async def _emit_inference_receipt(
             self,
             slug: str,
@@ -218,6 +290,7 @@ try:
             tokens_in: int | None,
             tokens_out: int | None,
             status: str,
+            thought_id: str | None = None,
         ) -> None:
             """Bean-1: post a hash-only inference receipt to the controller.
 
@@ -226,6 +299,11 @@ try:
             any exception is caught and logged so receipt emission can never
             break the inference path. Skipped for the unknown-slug sentinel
             (a receipt must attribute to a real bean).
+
+            ``thought_id`` (Track 3, optional) is the TMrFS thought this turn
+            auto-captured, if any — the cross-tier link from "what the model
+            did" to "what it was thinking about". ``None`` when TMrFS auto-
+            capture is off or failed; the receipt is posted either way.
             """
             try:
                 if not slug or slug == _UNKNOWN_SLUG:
@@ -250,6 +328,7 @@ try:
                     "started_at": started_at,
                     "completed_at": completed_at,
                     "status": status,
+                    "thought_id": thought_id,
                 })
             except Exception as exc:
                 logger.warning("litellm_callback: inference receipt emission failed: %s", exc)
@@ -299,9 +378,16 @@ try:
                     await self._post(self._notify_url, {"backend_name": backend_name})
                 if cost_usd and cost_usd > 0 and slug:
                     self._record_spend(slug, cost_usd)
+                # Track 3 auto-capture (success path only): best-effort TMrFS
+                # thought, stamped onto the receipt as thought_id if it
+                # worked. Fail-open — a TMrFS miss just leaves thought_id
+                # None; it never blocks or breaks the receipt below.
+                thought_id = None
+                if slug and slug != _UNKNOWN_SLUG:
+                    thought_id = await self._maybe_capture_thought(slug, model, kwargs, "success")
                 await self._emit_inference_receipt(
                     slug, model, kwargs, response_obj, start_time, end_time,
-                    tokens_in, tokens_out, "success",
+                    tokens_in, tokens_out, "success", thought_id=thought_id,
                 )
             except Exception as exc:
                 logger.warning("litellm_callback: success handler error: %s", exc)

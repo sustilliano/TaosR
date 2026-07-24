@@ -33,6 +33,17 @@ const MEMORY_TIER_INFO: Record<string, { label: string; description: string; min
 /** Whitelist of known verification_status values (mirrors Framework type union). */
 const VALID_STATUSES = new Set(["tested", "beta", "experimental", "broken"]);
 
+/**
+ * The three memory planes an agent can be given (see
+ * docs/design/memory-systems-integration.md). "taosmd" is always on and
+ * is not part of the toggleable set below — it's rendered separately,
+ * checked + disabled, so it can never be unchecked from the UI.
+ */
+const OPTIONAL_MEMORY_SYSTEMS: Array<{ id: "tmrfs" | "pk-trust"; label: string; description: string }> = [
+  { id: "tmrfs", label: "tmrfs", description: "Tensor memory — durable, decaying \"thoughts\" recalled by concept" },
+  { id: "pk-trust", label: "pk-trust", description: "Trust memory — snapshots, provable diffs, artifact lineage" },
+];
+
 /** Parse a tier_id like "arm-vulkan-8gb" and return RAM in MB. */
 function tierIdRamMb(tierId: string): number {
   const m = tierId.match(/(\d+)gb/i);
@@ -71,6 +82,9 @@ export interface MemoryWizardStepProps {
   setMemorySetupError: (v: string | null) => void;
   memoryPickerMode: "default" | "picker";
   setMemoryPickerMode: (v: "default" | "picker") => void;
+  /** Selected memory systems, always includes "taosmd". */
+  memorySystems: string[];
+  setMemorySystems: (v: string[]) => void;
 }
 
 export function MemoryWizardStep({
@@ -96,6 +110,8 @@ export function MemoryWizardStep({
   setMemorySetupError,
   memoryPickerMode,
   setMemoryPickerMode,
+  memorySystems,
+  setMemorySystems,
 }: MemoryWizardStepProps) {
   // Fetch default + install targets once on mount
   useEffect(() => {
@@ -174,6 +190,71 @@ export function MemoryWizardStep({
 
   const isRunning = memorySetupTaskId !== null && memorySetupState !== "done" && memorySetupState !== "failed";
 
+  function toggleMemorySystem(id: "tmrfs" | "pk-trust", enabled: boolean) {
+    setMemorySystems(
+      enabled
+        ? [...memorySystems, id]
+        : memorySystems.filter((m) => m !== id)
+    );
+  }
+
+  // Checkbox group for the three memory planes. Rendered in every
+  // MemoryWizardStep mode (default / skipped / picker) since the optional
+  // tensor/trust planes are independent of the taosmd device/tier setup.
+  const memorySystemsSelector = (
+    <div className="space-y-2">
+      <span className="block text-xs text-shell-text-secondary">Memory systems</span>
+      <label
+        htmlFor="memory-system-taosmd"
+        className="flex items-start gap-3 p-3 rounded-lg border border-white/10 bg-shell-bg-deep opacity-70 cursor-not-allowed"
+      >
+        <input
+          id="memory-system-taosmd"
+          type="checkbox"
+          checked
+          disabled
+          className="mt-0.5 accent-accent"
+          aria-describedby="memory-system-taosmd-desc"
+        />
+        <div className="flex-1">
+          <span className="text-sm font-medium">taosmd</span>
+          <div id="memory-system-taosmd-desc" className="text-xs text-shell-text-secondary mt-0.5">
+            Conversational memory (always on)
+          </div>
+        </div>
+      </label>
+      {OPTIONAL_MEMORY_SYSTEMS.map((sys) => {
+        const checked = memorySystems.includes(sys.id);
+        return (
+          <label
+            key={sys.id}
+            htmlFor={`memory-system-${sys.id}`}
+            className={`flex items-start gap-3 p-3 rounded-lg border cursor-pointer transition-colors ${
+              checked
+                ? "border-accent bg-accent/10"
+                : "border-white/10 bg-shell-bg-deep hover:bg-white/5"
+            }`}
+          >
+            <input
+              id={`memory-system-${sys.id}`}
+              type="checkbox"
+              checked={checked}
+              onChange={(e) => toggleMemorySystem(sys.id, e.target.checked)}
+              className="mt-0.5 accent-accent"
+              aria-describedby={`memory-system-${sys.id}-desc`}
+            />
+            <div className="flex-1">
+              <span className="text-sm font-medium">{sys.label}</span>
+              <div id={`memory-system-${sys.id}-desc`} className="text-xs text-shell-text-secondary mt-0.5">
+                {sys.description}
+              </div>
+            </div>
+          </label>
+        );
+      })}
+    </div>
+  );
+
   // "Has default" mode
   if (memoryPlugin !== null && memoryPickerMode === "default" && memoryDefault !== null && memoryDefault !== "none") {
     const def = memoryDefault;
@@ -204,6 +285,7 @@ export function MemoryWizardStep({
             </button>
           </div>
         </div>
+        {memorySystemsSelector}
       </div>
     );
   }
@@ -226,6 +308,7 @@ export function MemoryWizardStep({
         >
           Enable memory
         </button>
+        {memorySystemsSelector}
       </div>
     );
   }
@@ -334,6 +417,8 @@ export function MemoryWizardStep({
         </div>
       )}
 
+      {memorySystemsSelector}
+
       {/* Skip link */}
       <button
         type="button"
@@ -414,6 +499,9 @@ export function DeployWizard({
   const [memorySetupMsg, setMemorySetupMsg] = useState<string>("");
   const [memorySetupError, setMemorySetupError] = useState<string | null>(null);
   const [memoryPickerMode, setMemoryPickerMode] = useState<"default" | "picker">("default");
+  // Memory systems multi-select (contract: docs/design/memory-systems-integration.md).
+  // "taosmd" is always included; "tmrfs" / "pk-trust" are toggled on by the user.
+  const [memorySystems, setMemorySystems] = useState<string[]>(["taosmd"]);
 
   // Step 5 — Permissions
   const [canReadUserMemory, setCanReadUserMemory] = useState(false);
@@ -797,6 +885,7 @@ export function DeployWizard({
       setMemorySetupMsg("");
       setMemorySetupError(null);
       setMemoryPickerMode("default");
+      setMemorySystems(["taosmd"]);
       setCanReadUserMemory(false);
       setOnWorkerFailure("pause");
       setFallbackModels([]);
@@ -879,6 +968,10 @@ export function DeployWizard({
           memory_config: (memoryPlugin && memoryDeviceId && memoryTierId)
             ? { device_id: memoryDeviceId, tier_id: memoryTierId }
             : undefined,
+          // Memory systems multi-select — always includes "taosmd" (the
+          // always-on default); "tmrfs" / "pk-trust" are added when toggled.
+          // Wire name matches Track 1's DeployRequest.memory_systems.
+          memory_systems: memorySystems,
         }),
       });
       if (!res.ok) {
@@ -1325,6 +1418,8 @@ export function DeployWizard({
               setMemorySetupError={setMemorySetupError}
               memoryPickerMode={memoryPickerMode}
               setMemoryPickerMode={setMemoryPickerMode}
+              memorySystems={memorySystems}
+              setMemorySystems={setMemorySystems}
             />
           )}
 
@@ -1521,6 +1616,7 @@ export function DeployWizard({
                   ["Framework", frameworks.find((f) => f.id === selectedFramework)?.name ?? selectedFramework],
                   ["Model", models.find((m) => m.id === selectedModel)?.name ?? selectedModel],
                   ["Memory layer", memoryPlugin === null ? "Skipped" : memoryTierId ? `taOSmd · ${memoryTierId} on ${memoryDeviceId}` : "taOSmd (global default)"],
+                  ["Memory systems", memorySystems.join(", ")],
                   ["RAM limit", memory ? (parseInt(memory, 10) >= 1024 ? `${Math.round(parseInt(memory, 10) / 1024)} GB` : `${memory} MB`) : "Unlimited"],
                   ["CPUs", cpus ? `${cpus} Core${cpus !== "1" ? "s" : ""}` : "Unlimited"],
                   ["User Memory", canReadUserMemory ? "Allowed (read-only)" : "Denied"],

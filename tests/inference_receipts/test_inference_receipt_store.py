@@ -11,7 +11,9 @@ import pytest
 import pytest_asyncio
 
 aiosqlite = pytest.importorskip("aiosqlite")
+cryptography = pytest.importorskip("cryptography")
 
+from tinyagentos import bean_keystore
 from tinyagentos.inference_receipt_store import (
     BOOK_PROFILE,
     InferenceReceiptStore,
@@ -104,6 +106,43 @@ class TestInferenceReceiptStore:
             await store.record(model_id="m", prompt_hash="", output_hash=H2)
         with pytest.raises(ValueError):
             await store.record(model_id="", prompt_hash=H1, output_hash=H2)
+
+    async def test_thought_id_defaults_to_none(self, store):
+        await _record(store)
+        (r,) = await store.list()
+        assert r["thought_id"] is None
+
+    async def test_thought_id_roundtrip(self, store):
+        inf_id = await _record(store, thought_id="scout-1:th-abc123")
+        rows = await store.list()
+        assert rows[0]["inference_id"] == inf_id
+        assert rows[0]["thought_id"] == "scout-1:th-abc123"
+
+    async def test_thought_id_does_not_invalidate_signature(self, store, tmp_path):
+        # Track 3: thought_id is stored but deliberately NOT included in the
+        # signed canonical bytes (bean_keystore._CANONICAL_FIELDS predates
+        # it) - a signed receipt must still verify "valid" whether or not a
+        # thought_id is attached.
+        slug = "scout-1"
+        data_dir = tmp_path / "data"
+
+        def signer(receipt):
+            return bean_keystore.sign_receipt(slug, data_dir, receipt)
+
+        inf_id = await store.record(
+            model_id="hermes-3-llama-3.1-8b",
+            prompt_hash=H1,
+            output_hash=H2,
+            signer=signer,
+            thought_id="scout-1:th-xyz",
+        )
+        (r,) = await store.list()
+        assert r["inference_id"] == inf_id
+        assert r["thought_id"] == "scout-1:th-xyz"
+        assert r["signature"] is not None
+
+        pub_hex = bean_keystore.public_key_hex(slug, data_dir)
+        assert bean_keystore.verify_receipt(r, pub_hex) == "valid"
 
     async def test_persistence_across_reopen(self, tmp_path):
         path = tmp_path / "agent-memory" / "scout-2" / "receipts.sqlbook"
