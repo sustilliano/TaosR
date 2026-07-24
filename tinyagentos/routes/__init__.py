@@ -57,6 +57,16 @@ def register_all_routers(app):
     from tinyagentos.routes.consent import router as consent_router
     app.include_router(consent_router, dependencies=_csrf)
 
+    # Bean-4 cognitive firewall (docs/design/bean-2-5-plan.md) - per-agent
+    # tool-call topology baseline, anomaly check, and alert log.
+    from tinyagentos.routes.firewall import router as firewall_router
+    app.include_router(firewall_router, dependencies=_csrf)
+
+    # Bean-5 attestation walk (docs/design/bean-2-5-plan.md) - offline verify
+    # of a receipt's chain: signature -> provenance -> model card -> corpus.
+    from tinyagentos.routes.attestation import router as attestation_router
+    app.include_router(attestation_router, dependencies=_csrf)
+
     # project_invites is registered before the agents router because it owns the
     # literal /api/agents/invites routes, which must win over the agents router's
     # /api/agents/{name} dynamic route (otherwise GET/DELETE resolve to "agent
