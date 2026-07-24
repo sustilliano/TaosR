@@ -31,6 +31,7 @@ from tinyagentos.bean_firewall import (
     empty_baseline,
     is_greenfield,
 )
+from tinyagentos.bean_firewall_store import bridge_alert_to_notifications
 
 router = APIRouter()
 
@@ -173,8 +174,14 @@ async def check_firewall_window(
     result = detect(baseline, normalised, threshold=threshold)
     if result["anomalous"]:
         await store.record_alert(name, result["score"], result["reasons"])
-        # TODO: wire real sink — bridge to the shared notification store
-        # (tinyagentos.notifications.NotificationStore at
-        # request.app.state.notifications) once this router is registered
-        # in a booted app; see bean_firewall_store.bridge_alert_to_notifications.
+        # Surface the alert in the shared notification store (same sink MCP
+        # supervisor errors use) when a booted app provides one. Duck-typed
+        # and best-effort: absent in bare-app tests, so guard on presence;
+        # bridge_alert_to_notifications swallows failures so a notification
+        # outage never breaks the durable alert log written just above.
+        notif = getattr(request.app.state, "notifications", None)
+        if notif is not None:
+            await bridge_alert_to_notifications(
+                notif, name, result["score"], result["reasons"]
+            )
     return {"agent_name": name, **result}

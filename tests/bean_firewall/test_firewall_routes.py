@@ -135,6 +135,36 @@ class TestFirewallRoutes:
         assert alerts[0]["score"] == body["score"]
         assert alerts[0]["reasons"] == body["reasons"]
 
+    async def test_anomalous_check_fans_out_to_notification_store(self, tmp_path):
+        # When a booted app provides app.state.notifications, an anomalous
+        # check surfaces the alert there (in addition to the durable log).
+        app = _make_app(tmp_path)
+        added: list[dict] = []
+
+        class FakeNotifications:
+            async def add(self, **kwargs):
+                added.append(kwargs)
+
+        app.state.notifications = FakeNotifications()
+        transport = ASGITransport(app=app)
+        async with AsyncClient(transport=transport, base_url="http://test") as c:
+            await c.post(
+                "/api/agents/scout-1/firewall/baseline",
+                json={"events": _events(*(["list_tanks", "fleet_status"] * 20))},
+            )
+            resp = await c.post(
+                "/api/agents/scout-1/firewall/check",
+                json={"events": _events("drive", "drive", "stop", start_ts=3000.0)},
+            )
+            assert resp.json()["anomalous"] is True
+        assert len(added) == 1
+        assert added[0]["source"] == "bean_firewall"
+        assert added[0]["level"] == "warning"
+        assert added[0]["data"]["agent"] == "scout-1"
+        store = getattr(app.state, "bean_firewall_store", None)
+        if store is not None:
+            await store.close()
+
     async def test_check_window_requires_events_list(self, client):
         resp = await client.post("/api/agents/scout-1/firewall/check", json={})
         assert resp.status_code == 400

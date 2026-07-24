@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Check, Copy, ExternalLink, Fingerprint, Loader2, ReceiptText } from "lucide-react";
+import { Check, Copy, ExternalLink, Fingerprint, Loader2, Minus, ReceiptText, ShieldCheck, X } from "lucide-react";
 
 /* ------------------------------------------------------------------ */
 /*  AgentProvenancePanel — Bean-0 provenance record for one agent      */
@@ -19,12 +19,27 @@ interface ProvenanceRecord {
 }
 
 interface InferenceReceipt {
+  inference_id?: string;
   completed_at?: string | number;
 }
 
 interface ReceiptsSummary {
   count: number;
   newestCompletedAt: string | number | null;
+  latestInferenceId: string | null;
+}
+
+type LinkStatus = "pass" | "fail" | "unknown";
+
+interface AttestationLink {
+  name: string;
+  status: LinkStatus;
+  detail?: string;
+}
+
+interface Attestation {
+  overall: string; // "verified" | "partial" | "broken"
+  links: AttestationLink[];
 }
 
 /** Parse a recorded_at / completed_at value (ISO string or unix seconds). */
@@ -89,11 +104,61 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
   );
 }
 
+const OVERALL_STYLE: Record<string, string> = {
+  verified: "bg-emerald-500/20 text-emerald-400",
+  partial: "bg-amber-500/20 text-amber-400",
+  broken: "bg-red-500/20 text-red-400",
+};
+
+function LinkIcon({ status }: { status: LinkStatus }) {
+  if (status === "pass")
+    return <Check size={11} className="text-emerald-400 shrink-0" aria-label="pass" />;
+  if (status === "fail")
+    return <X size={11} className="text-red-400 shrink-0" aria-label="fail" />;
+  return <Minus size={11} className="text-shell-text-tertiary shrink-0" aria-label="unknown" />;
+}
+
+/** The Bean-5 attestation chain: one row per link + an overall verdict. */
+function AttestationChain({ attestation }: { attestation: Attestation }) {
+  const overall = attestation.overall.toLowerCase();
+  return (
+    <div className="flex flex-col gap-2 p-3 rounded-xl border border-white/5 bg-white/[0.02]">
+      <div className="flex items-center gap-2">
+        <ShieldCheck size={13} className="text-shell-text-secondary" aria-hidden />
+        <span className="text-[10px] text-shell-text-tertiary uppercase tracking-wider">
+          Attestation
+        </span>
+        <span
+          className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium ${
+            OVERALL_STYLE[overall] ?? "bg-white/10 text-shell-text-secondary"
+          }`}
+        >
+          {overall}
+        </span>
+      </div>
+      {attestation.links.map((link) => (
+        <div key={link.name} className="flex items-baseline gap-2">
+          <LinkIcon status={link.status} />
+          <span className="text-xs text-shell-text font-mono w-32 shrink-0">{link.name}</span>
+          {link.detail && (
+            <span className="text-[11px] text-shell-text-tertiary min-w-0 break-words">
+              {link.detail}
+            </span>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function AgentProvenancePanel({ agentName }: { agentName: string }) {
   const [loading, setLoading] = useState(true);
   const [record, setRecord] = useState<ProvenanceRecord | null>(null);
   const [notFound, setNotFound] = useState(false);
   const [receipts, setReceipts] = useState<ReceiptsSummary | null>(null);
+  const [attestation, setAttestation] = useState<Attestation | null>(null);
+  const [attesting, setAttesting] = useState(false);
+  const [attestError, setAttestError] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     try {
@@ -139,17 +204,50 @@ export function AgentProvenancePanel({ agentName }: { agentName: string }) {
         const d = toDate(r.completed_at);
         return d && (!best || d > best) ? d : best;
       }, null);
+      // GET returns newest-first, so list[0] is the latest receipt.
       setReceipts({
         count: typeof data?.count === "number" ? data.count : list.length,
         newestCompletedAt: newest ? newest.toISOString() : null,
+        latestInferenceId: list[0]?.inference_id ?? null,
       });
     } catch {
       setReceipts(null);
     }
   }, [agentName]);
 
+  // Bean-5 attestation walk — on demand, verify the latest receipt's chain.
+  // The endpoint may not exist yet; failures surface as a quiet inline note.
+  const verifyLatest = useCallback(async () => {
+    const id = receipts?.latestInferenceId;
+    if (!id) return;
+    setAttesting(true);
+    setAttestError(null);
+    try {
+      const res = await fetch(
+        `/api/agents/${encodeURIComponent(agentName)}/attestation/${encodeURIComponent(id)}`,
+      );
+      if (!res.ok) {
+        setAttestError("Attestation unavailable");
+        setAttestation(null);
+        return;
+      }
+      const data = await res.json();
+      setAttestation({
+        overall: String(data?.overall ?? data?.status ?? "unknown"),
+        links: (data?.links ?? data?.chain ?? []) as AttestationLink[],
+      });
+    } catch {
+      setAttestError("Attestation unavailable");
+      setAttestation(null);
+    } finally {
+      setAttesting(false);
+    }
+  }, [agentName, receipts?.latestInferenceId]);
+
   useEffect(() => {
     setLoading(true);
+    setAttestation(null);
+    setAttestError(null);
     load();
     loadReceipts();
   }, [load, loadReceipts]);
@@ -250,13 +348,34 @@ export function AgentProvenancePanel({ agentName }: { agentName: string }) {
         </div>
 
         {receipts && receipts.count > 0 && (
-          <p className="flex items-center gap-1.5 text-xs text-shell-text-secondary">
-            <ReceiptText size={11} className="text-shell-text-tertiary shrink-0" aria-hidden />
-            {receipts.count} inference receipt{receipts.count === 1 ? "" : "s"}
-            {receipts.newestCompletedAt && (
-              <> · newest {fmtWhen(receipts.newestCompletedAt)}</>
+          <div className="flex flex-col gap-2">
+            <p className="flex items-center gap-1.5 text-xs text-shell-text-secondary">
+              <ReceiptText size={11} className="text-shell-text-tertiary shrink-0" aria-hidden />
+              {receipts.count} inference receipt{receipts.count === 1 ? "" : "s"}
+              {receipts.newestCompletedAt && (
+                <> · newest {fmtWhen(receipts.newestCompletedAt)}</>
+              )}
+              {receipts.latestInferenceId && (
+                <button
+                  type="button"
+                  onClick={verifyLatest}
+                  disabled={attesting}
+                  className="ml-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-white/5 hover:bg-white/10 text-xs text-shell-text-secondary transition-colors disabled:opacity-50"
+                >
+                  {attesting ? (
+                    <Loader2 size={10} className="animate-spin" aria-hidden />
+                  ) : (
+                    <ShieldCheck size={10} aria-hidden />
+                  )}
+                  Verify latest
+                </button>
+              )}
+            </p>
+            {attestError && (
+              <p className="text-[11px] text-shell-text-tertiary">{attestError}</p>
             )}
-          </p>
+            {attestation && <AttestationChain attestation={attestation} />}
+          </div>
         )}
       </div>
     </div>

@@ -33,14 +33,11 @@ export default defineConfig({
     // 2-core CI runner, failing the whole run with no assertion. Bound the fork
     // pool and give each worker a large heap so GC has room; a single flaky
     // test also retries rather than failing the gate.
+    // Vitest 4 flattened poolOptions.forks.* to top-level (maxForks -> maxWorkers,
+    // execArgv hoisted, minForks removed); see the pool-rework migration note.
     pool: "forks",
-    poolOptions: {
-      forks: {
-        maxForks: 2,
-        minForks: 1,
-        execArgv: ["--max-old-space-size=4096"],
-      },
-    },
+    maxWorkers: 2,
+    execArgv: ["--max-old-space-size=4096"],
     retry: 1,
     // *.spec.ts is reserved for Playwright e2e specs; vitest uses *.test.ts
     exclude: [

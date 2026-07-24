@@ -3,7 +3,7 @@
  * agent detail view, wired to /api/agents/{name}/provenance (and the
  * optional /inference-receipts endpoint, which may 404).
  */
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { AgentProvenancePanel } from "../AgentProvenancePanel";
 
@@ -44,9 +44,15 @@ afterEach(() => {
 function stubFetch(handlers: {
   provenance: () => unknown;
   receipts?: () => unknown;
+  attestation?: () => unknown;
 }) {
   global.fetch = vi.fn(async (url: unknown) => {
     const u = String(url);
+    // Order matters: /attestation is more specific than the agent prefix.
+    if (u.includes("/attestation/")) {
+      if (handlers.attestation) return handlers.attestation();
+      return jsonResponse({ error: "not found" }, 404);
+    }
     if (u.includes("/provenance")) return handlers.provenance();
     if (u.includes("/inference-receipts")) {
       if (handlers.receipts) return handlers.receipts();
@@ -115,5 +121,49 @@ describe("<AgentProvenancePanel />", () => {
     render(<AgentProvenancePanel agentName="scout" />);
     await waitFor(() => expect(screen.getByText("silicon")).toBeInTheDocument());
     expect(screen.queryByText(/inference receipt/)).toBeNull();
+  });
+
+  const RECEIPTS_WITH_ID = () =>
+    jsonResponse({
+      receipts: [{ inference_id: "inf-abc12345", completed_at: "2026-07-21T10:00:00Z" }],
+      count: 1,
+    });
+
+  it("verifies the latest receipt and renders the attestation chain (Bean-5)", async () => {
+    stubFetch({
+      provenance: () => jsonResponse(ENVELOPE),
+      receipts: RECEIPTS_WITH_ID,
+      attestation: () =>
+        jsonResponse({
+          overall: "verified",
+          links: [
+            { name: "signature", status: "pass" },
+            { name: "provenance_present", status: "pass" },
+            { name: "model_binding", status: "pass" },
+            { name: "constitution", status: "pass" },
+            { name: "corpus", status: "pass" },
+          ],
+        }),
+    });
+    render(<AgentProvenancePanel agentName="scout" />);
+    const btn = await screen.findByRole("button", { name: /verify latest/i });
+    fireEvent.click(btn);
+    await waitFor(() => expect(screen.getByText("verified")).toBeInTheDocument());
+    expect(screen.getByText("signature")).toBeInTheDocument();
+    expect(screen.getByText("model_binding")).toBeInTheDocument();
+  });
+
+  it("shows a quiet note when attestation is unavailable", async () => {
+    stubFetch({
+      provenance: () => jsonResponse(ENVELOPE),
+      receipts: RECEIPTS_WITH_ID,
+      attestation: () => jsonResponse({ error: "nope" }, 404),
+    });
+    render(<AgentProvenancePanel agentName="scout" />);
+    const btn = await screen.findByRole("button", { name: /verify latest/i });
+    fireEvent.click(btn);
+    await waitFor(() =>
+      expect(screen.getByText("Attestation unavailable")).toBeInTheDocument()
+    );
   });
 });
