@@ -85,6 +85,12 @@ async def post_inference_receipt(name: str, request: Request, body: InferenceRec
             status_code=400,
         )
     store = await _get_store(request, name)
+    # Bean-2: sign the receipt with the agent's Ed25519 key. The signer runs
+    # inside record() so the signature covers the generated inference_id, in
+    # one append-only write; it is fail-open (a signing error stores the row
+    # unsigned rather than dropping it).
+    from tinyagentos import bean_keystore
+    data_dir = getattr(request.app.state, "data_dir", Path("data"))
     inference_id = await store.record(
         model_id=body.model_id,
         prompt_hash=body.prompt_hash,
@@ -95,6 +101,7 @@ async def post_inference_receipt(name: str, request: Request, body: InferenceRec
         started_at=body.started_at,
         completed_at=body.completed_at,
         status=body.status,
+        signer=lambda receipt: bean_keystore.sign_receipt(name, data_dir, receipt),
     )
     return {"agent_name": name, "inference_id": inference_id}
 

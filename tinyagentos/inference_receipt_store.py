@@ -24,6 +24,7 @@ matches the profile).
 import logging
 import secrets
 from datetime import datetime, timezone
+from typing import Callable
 
 import aiosqlite
 
@@ -144,13 +145,28 @@ class InferenceReceiptStore(BaseStore):
         started_at: str | None = None,
         completed_at: str | None = None,
         status: str = "success",
+        signature: str | None = None,
+        signer: "Callable[[dict], str] | None" = None,
     ) -> str:
         """Append a receipt row and return its generated inference_id.
 
         ``prompt_hash`` / ``output_hash`` are sha256 hex digests computed by
-        the caller - this store never sees message or response text.  There
-        is no ``signature`` parameter: signing is Bean-2+, the column stays
-        NULL here.
+        the caller - this store never sees message or response text.
+
+        Signing (Bean-2+) is optional and can arrive two ways:
+
+        * ``signature`` — a hex Ed25519 signature the caller already computed.
+        * ``signer`` — a callback ``fn(receipt: dict) -> hex``. Because the
+          signature must cover the generated ``inference_id`` (which the
+          caller cannot know in advance), the store builds the full receipt
+          dict here, calls ``signer`` on it, and writes both in one
+          append-only insert. Fail-open: if signing raises, the row is still
+          written **unsigned** (a receipt must never be lost because signing
+          failed) - it verifies as "unsigned", not "invalid".
+
+        Omit both and the column stays NULL exactly as in Bean-1. This store
+        never signs on its own; ``signer`` is supplied by the caller (the
+        receipt POST route wires in the per-agent key via ``bean_keystore``).
         """
         if self._db is None:
             raise RuntimeError("InferenceReceiptStore not initialised - call init() first")
@@ -159,11 +175,25 @@ class InferenceReceiptStore(BaseStore):
         if not prompt_hash or not output_hash:
             raise ValueError("prompt_hash and output_hash are required")
         inference_id = _new_id()
+        if signature is None and signer is not None:
+            receipt = {
+                "inference_id": inference_id, "trace_id": trace_id,
+                "model_id": model_id, "prompt_hash": prompt_hash,
+                "output_hash": output_hash, "prompt_tokens": prompt_tokens,
+                "completion_tokens": completion_tokens, "started_at": started_at,
+                "completed_at": completed_at, "status": status,
+            }
+            try:
+                signature = signer(receipt)
+            except Exception as exc:  # fail-open: store unsigned, never drop
+                logger.warning("inference_receipt_store: signing failed, storing unsigned: %s", exc)
+                signature = None
         await self._db.execute(
-            f"INSERT INTO inference ({_COLS}) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL)",
+            f"INSERT INTO inference ({_COLS}) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             (
                 inference_id, trace_id, model_id, prompt_hash, output_hash,
                 prompt_tokens, completion_tokens, started_at, completed_at, status,
+                signature,
             ),
         )
         await self._db.commit()

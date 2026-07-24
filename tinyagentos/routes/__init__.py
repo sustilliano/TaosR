@@ -47,6 +47,16 @@ def register_all_routers(app):
     from tinyagentos.routes.inference_receipts import router as inference_receipts_router
     app.include_router(inference_receipts_router, dependencies=_csrf)
 
+    # Bean-2 receipt signing (docs/design/bean-2-5-plan.md) - publishes each
+    # agent's Ed25519 public key so a receipt holder can verify offline.
+    from tinyagentos.routes.bean_keys import router as bean_keys_router
+    app.include_router(bean_keys_router, dependencies=_csrf)
+
+    # Bean-3 consent gate (docs/design/bean-2-5-plan.md) - grant/revoke/list
+    # default-closed consent for physical-actuation tool scopes.
+    from tinyagentos.routes.consent import router as consent_router
+    app.include_router(consent_router, dependencies=_csrf)
+
     # project_invites is registered before the agents router because it owns the
     # literal /api/agents/invites routes, which must win over the agents router's
     # /api/agents/{name} dynamic route (otherwise GET/DELETE resolve to "agent
