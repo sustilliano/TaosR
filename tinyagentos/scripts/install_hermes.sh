@@ -12,6 +12,9 @@ LLM_KEY="${LITELLM_API_KEY:?LITELLM_API_KEY required}"
 BRIDGE_URL="${TAOS_BRIDGE_URL:?TAOS_BRIDGE_URL required}"
 LOCAL_TOKEN="${TAOS_LOCAL_TOKEN:?TAOS_LOCAL_TOKEN required}"
 MODEL="${TAOS_MODEL:-kilo-auto/free}"
+# Bean-0: pin the framework ref. Env-overridable; "main" keeps today's
+# behaviour when nothing is set.
+HERMES_RELEASE="${TAOS_HERMES_RELEASE:-main}"
 
 log "installing uv (idempotent)"
 if ! command -v uv >/dev/null 2>&1 && [ ! -x /root/.local/bin/uv ]; then
@@ -38,11 +41,17 @@ find_hermes() {
 
 HERMES_BIN="$(find_hermes || true)"
 if [ -z "$HERMES_BIN" ]; then
-    log "hermes not present -- running Hermes installer (--skip-setup)"
-    curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash -s -- --skip-setup
+    log "hermes not present -- downloading Hermes installer (ref=$HERMES_RELEASE)"
+    # Bean-0: download first, hash, then execute — never pipe curl to bash,
+    # so the exact installer bytes that ran are attestable.
+    curl -fsSL "https://raw.githubusercontent.com/NousResearch/hermes-agent/${HERMES_RELEASE}/scripts/install.sh" -o /tmp/hermes-install.sh
+    INSTALLER_SHA256=$(sha256sum /tmp/hermes-install.sh | awk '{print $1}')
+    log "installer sha256=$INSTALLER_SHA256 -- running (--skip-setup)"
+    bash /tmp/hermes-install.sh --skip-setup
     HERMES_BIN="$(find_hermes || true)"
 else
     log "hermes already installed (base image) -- skipping installer"
+    INSTALLER_SHA256="preinstalled"
 fi
 [ -z "$HERMES_BIN" ] && { log "ERROR: hermes binary not found"; exit 2; }
 log "hermes at $HERMES_BIN"
@@ -104,8 +113,18 @@ StandardError=append:/var/log/hermes-gateway.log
 WantedBy=multi-user.target
 UNIT
 
-log "writing taOS-Hermes bridge"
+log "writing constitution (system prompt) to /opt/taos/constitution.txt"
 mkdir -p /opt/taos
+# Bean-0: the agent's system prompt is its "constitution" — written once
+# here, hash-pinned, and read by the bridge at startup. Text must stay
+# byte-identical to the bridge's embedded fallback below.
+cat > /opt/taos/constitution.txt <<CONSTEOF
+You are $AGENT_NAME, an autonomous agent running inside the Hermes Agent Gateway (NousResearch/hermes-agent) deployed on taOS. When asked what framework you run on, say Hermes. The underlying language model is routed through taOS's LiteLLM proxy and is an implementation detail — do not describe yourself as Claude/GPT/etc. just because the model weights come from Anthropic or OpenAI.
+CONSTEOF
+CONSTITUTION_SHA256=$(sha256sum /opt/taos/constitution.txt | awk '{print $1}')
+log "constitution sha256=$CONSTITUTION_SHA256"
+
+log "writing taOS-Hermes bridge"
 cat > /opt/taos/taos-hermes-bridge.py <<'BRIDGE_EOF'
 #!/usr/bin/env python3
 """taOS-Hermes bridge: subscribes to taOS SSE for this agent, forwards
@@ -157,7 +176,8 @@ async def fetch_bootstrap(client: httpx.AsyncClient) -> dict:
     return boot
 
 
-_SYSTEM_PROMPT = (
+_CONSTITUTION_PATH = "/opt/taos/constitution.txt"
+_FALLBACK_SYSTEM_PROMPT = (
     f"You are {AGENT_NAME}, an autonomous agent running inside the Hermes "
     "Agent Gateway (NousResearch/hermes-agent) deployed on taOS. When asked "
     "what framework you run on, say Hermes. The underlying language model "
@@ -165,6 +185,23 @@ _SYSTEM_PROMPT = (
     "— do not describe yourself as Claude/GPT/etc. just because the model "
     "weights come from Anthropic or OpenAI."
 )
+
+
+def _load_constitution() -> str:
+    """Bean-0: the system prompt is the agent's hash-pinned constitution,
+    written by the installer. Fall back to the embedded text (byte-identical
+    to what the installer writes) if the file is missing."""
+    try:
+        with open(_CONSTITUTION_PATH, "r", encoding="utf-8") as f:
+            text = f.read().rstrip("\n")
+        if text:
+            return text
+    except OSError:
+        pass
+    return _FALLBACK_SYSTEM_PROMPT
+
+
+_SYSTEM_PROMPT = _load_constitution()
 
 
 def _render_context(ctx):
@@ -443,4 +480,29 @@ done
 systemctl enable --now taos-hermes-bridge.service
 mkdir -p /opt/taos
 echo "hermes-0.1" > /opt/taos/framework.version
+
+log "writing Bean-0 provenance record to /opt/taos/provenance.json"
+RECORDED_AT="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+cat > /opt/taos/provenance.json <<PROVEOF
+{
+  "substrate": "silicon",
+  "framework": "hermes",
+  "framework_ref": "$HERMES_RELEASE",
+  "installer_sha256": "$INSTALLER_SHA256",
+  "constitution_sha256": "$CONSTITUTION_SHA256",
+  "model_id": "$MODEL",
+  "corpus_refs": ["https://huggingface.co/datasets/teknium/OpenHermes-2.5"],
+  "recorded_at": "$RECORDED_AT"
+}
+PROVEOF
+log "provenance: framework_ref=$HERMES_RELEASE installer=$INSTALLER_SHA256 constitution=$CONSTITUTION_SHA256"
+
+# Best-effort registration with the controller; the endpoint ships with
+# Bean-0 so older controllers may 404 — the local record is authoritative.
+curl -fsS -X POST "$BRIDGE_URL/api/agents/$AGENT_NAME/provenance" \
+    -H "Authorization: Bearer $LOCAL_TOKEN" \
+    -H "Content-Type: application/json" \
+    -d @/opt/taos/provenance.json \
+    || log "provenance POST failed (controller may predate Bean-0) — record kept locally"
+
 log "done"

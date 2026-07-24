@@ -36,6 +36,11 @@ def register_all_routers(app):
     from tinyagentos.routes.delegation import router as delegation_router
     app.include_router(delegation_router, dependencies=_csrf)
 
+    # Bean-0 agent provenance (docs/design/silicon-bean-integration.md) -
+    # grouped with the other /api/agents/... routers above the agents router.
+    from tinyagentos.routes.provenance import router as provenance_router
+    app.include_router(provenance_router, dependencies=_csrf)
+
     # project_invites is registered before the agents router because it owns the
     # literal /api/agents/invites routes, which must win over the agents router's
     # /api/agents/{name} dynamic route (otherwise GET/DELETE resolve to "agent

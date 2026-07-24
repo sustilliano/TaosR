@@ -1,0 +1,91 @@
+id: hermes-3-llama-3.1-8b
+name: Hermes 3 Llama 3.1 8B
+type: model
+version: 3.0.0
+description: NousResearch Hermes 3 on Llama 3.1 8B — strong tool calling,
+  structured output and roleplay. Completes the Bean-0 provenance chain for
+  Hermes agents (published model card + open OpenHermes training corpus at
+  https://huggingface.co/datasets/teknium/OpenHermes-2.5).
+homepage: https://huggingface.co/NousResearch/Hermes-3-Llama-3.1-8B
+license: Llama 3.1 Community License
+capabilities:
+- chat
+- tool-calling
+- code
+- reasoning
+variants:
+- id: q4_k_m
+  name: Q4_K_M (4.9GB)
+  format: gguf
+  size_mb: 4920
+  min_ram_mb: 6144
+  download_url: https://huggingface.co/NousResearch/Hermes-3-Llama-3.1-8B-GGUF/resolve/main/Hermes-3-Llama-3.1-8B.Q4_K_M.gguf
+  sha256: d4403ce5a6e930f4c2509456388c20d633a15ff08dd52ef3b142ff1810ec3553
+  requires:
+    backends:
+    - id: ollama
+      targets:
+      - apple-silicon
+      - x86-cuda
+      - x86-vulkan
+      - arm-vulkan
+      - cpu
+      min_ram_mb: 6144
+    - id: llama-cpp
+      targets:
+      - x86-vulkan
+      - arm-vulkan
+      - cpu
+      min_ram_mb: 6144
+    - id: vllm
+      targets:
+      - x86-cuda
+      min_ram_mb: 6144
+- id: q8_0
+  name: Q8_0 (8.5GB)
+  format: gguf
+  size_mb: 8540
+  min_ram_mb: 10240
+  download_url: https://huggingface.co/NousResearch/Hermes-3-Llama-3.1-8B-GGUF/resolve/main/Hermes-3-Llama-3.1-8B.Q8_0.gguf
+  sha256: c77c263f78b2f56fbaddd3ef2af750fda6ebb4344a546aaa0bfdd546b1ca8d84
+  requires:
+    backends:
+    - id: ollama
+      targets:
+      - apple-silicon
+      - x86-cuda
+      - x86-vulkan
+      - arm-vulkan
+      - cpu
+      min_ram_mb: 10240
+    - id: llama-cpp
+      targets:
+      - x86-vulkan
+      - arm-vulkan
+      - cpu
+      min_ram_mb: 10240
+    - id: vllm
+      targets:
+      - x86-cuda
+      min_ram_mb: 10240
+hardware_tiers:
+  arm-cpu-16gb:
+    recommended: q4_k_m
+  arm-npu-16gb:
+    recommended: q4_k_m
+  arm-npu-32gb:
+    recommended: q8_0
+  x86-cuda-8gb:
+    recommended: q4_k_m
+  x86-cuda-12gb:
+    recommended: q4_k_m
+  x86-cuda-24gb:
+    recommended: q8_0
+  x86-vulkan-8gb:
+    recommended: q4_k_m
+  x86-vulkan-6gb:
+    recommended: q4_k_m
+  cpu-only:
+    recommended: q4_k_m
+    notes: Slow but functional
+context_window: 131072
