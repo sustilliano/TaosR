@@ -67,10 +67,42 @@ def is_flagged_scope(tool_name: str) -> bool:
     return tool_name in FLAGGED_SCOPES
 
 
+def gated_consent_check(
+    scope: str,
+    is_gated: Callable[[str], bool],
+    is_allowed_fn: Callable[[str], bool],
+    denial_reason: str | None = None,
+) -> tuple[bool, str | None]:
+    """Subject-agnostic consent decision — the all-digital core
+    (docs/design/silicon-bean-all-digital.md).
+
+    The rule is the same one Bean-3 and the userspace app broker both
+    compute: ``gated and not granted -> deny``. What varies between subject
+    kinds is only *which* predicate marks a scope gated:
+
+    - ``is_gated`` — the caller's gated-set membership test
+      (``is_flagged_scope`` for agent actuation; ``ns in GATED_CAPS`` for
+      app capabilities).
+    - ``is_allowed_fn`` — the per-subject grant lookup (typically
+      ``BeanConsentStore.is_allowed`` bound to a subject key).
+
+    non-gated scope -> (True, None); gated + granted -> (True, None);
+    gated + not granted -> (False, reason). Pure: no store, no I/O.
+    """
+    if not is_gated(scope):
+        return True, None
+    if is_allowed_fn(scope):
+        return True, None
+    return False, denial_reason or _DENIAL_REASON
+
+
 def consent_check(
     tool_name: str, is_allowed_fn: Callable[[str], bool]
 ) -> tuple[bool, str | None]:
-    """Pure consent decision for a single tool call.
+    """Pure consent decision for a single agent tool call (Bean-3).
+
+    Thin wrapper over ``gated_consent_check`` binding the gated predicate to
+    ``is_flagged_scope`` (physical actuation); behaviour is unchanged.
 
     - non-flagged tool -> (True, None): no gate, unchanged from today.
     - flagged tool + is_allowed_fn(tool_name) is True -> (True, None).
@@ -80,8 +112,4 @@ def consent_check(
     bound to an agent, or a lambda in tests) so this function needs no store
     and no I/O, only a scope -> bool lookup.
     """
-    if not is_flagged_scope(tool_name):
-        return True, None
-    if is_allowed_fn(tool_name):
-        return True, None
-    return False, _DENIAL_REASON
+    return gated_consent_check(tool_name, is_flagged_scope, is_allowed_fn)
