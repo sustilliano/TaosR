@@ -1,0 +1,36 @@
+{
+  "_comment": "taOS MCP connectors for open-cowork (Seam B of docs/design/open-cowork-integration.md). Standard Claude Agent SDK stdio shape {command,args,env}. Place per your open-cowork version's src/main/mcp/ config surface. Clone this fork (or copy the robotics/, planekey/, tmrfs/ dirs) onto the cowork machine and edit the absolute paths + controller URLs below. Bridges are stdlib-only Python 3 — no venv needed.",
+  "mcpServers": {
+    "taos-tank-fleet": {
+      "command": "python3",
+      "args": ["/opt/taosr/robotics/tank_fleet_mcp.py"],
+      "env": {
+        "TAOS_TANK_COORDINATOR_URL": "http://taos-controller:8420",
+        "TAOS_TANK_MAX_SPEED": "70"
+      }
+    },
+    "taos-cameras": {
+      "command": "python3",
+      "args": ["/opt/taosr/robotics/camera_mcp.py"],
+      "env": {
+        "TAOS_CAMERAS_FILE": "/opt/taosr/integrations/open-cowork/cameras.json"
+      }
+    },
+    "taos-tmrfs-memory": {
+      "command": "python3",
+      "args": ["/opt/taosr/tmrfs/tmrfs_memory_mcp.py"],
+      "env": {
+        "TAOS_TMRFS_URL": "http://taos-controller:8080",
+        "TAOS_TMRFS_AGENT": "open-cowork"
+      }
+    },
+    "taos-pk-trust": {
+      "command": "python3",
+      "args": ["/opt/taosr/planekey/pk_trust_mcp.py"],
+      "env": {
+        "PK_VSE_TOOLCHAIN": "/opt/planekey-vse/toolchain",
+        "PK_WORKSPACE": "/opt/taos-pk-workspace"
+      }
+    }
+  }
+}
