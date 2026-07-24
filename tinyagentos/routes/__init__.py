@@ -41,6 +41,12 @@ def register_all_routers(app):
     from tinyagentos.routes.provenance import router as provenance_router
     app.include_router(provenance_router, dependencies=_csrf)
 
+    # Bean-1 inference receipts (docs/design/silicon-bean-integration.md) -
+    # POST is bearer-authed by the LiteLLM callback (CSRF-exempt for bearer),
+    # GET is current_user-gated; grouped with provenance under /api/agents/...
+    from tinyagentos.routes.inference_receipts import router as inference_receipts_router
+    app.include_router(inference_receipts_router, dependencies=_csrf)
+
     # project_invites is registered before the agents router because it owns the
     # literal /api/agents/invites routes, which must win over the agents router's
     # /api/agents/{name} dynamic route (otherwise GET/DELETE resolve to "agent

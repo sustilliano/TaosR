@@ -15,6 +15,8 @@ AuthManager.local_token_path(), with a final fallback to the
 """
 from __future__ import annotations
 
+import hashlib
+import json
 import logging
 import os
 import time
@@ -70,6 +72,26 @@ def _slug_from_alias(key_alias: str | None) -> str:
     return _UNKNOWN_SLUG
 
 
+def _prompt_hash(messages: list) -> str:
+    """sha256 hex digest of the canonical prompt (Bean-1 inference receipts).
+
+    Canonical form is ``json.dumps`` of the messages list with sorted keys
+    and compact separators, so the same conversation always hashes the same
+    regardless of dict ordering. ``default=str`` keeps the digest total even
+    when a message carries a non-JSON value; the receipt must never be the
+    thing that breaks the inference path.
+    """
+    canonical = json.dumps(
+        messages, sort_keys=True, separators=(",", ":"), default=str
+    )
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+def _output_hash(text: str) -> str:
+    """sha256 hex digest of the response text (empty string hashes too)."""
+    return hashlib.sha256((text or "").encode("utf-8")).hexdigest()
+
+
 try:
     from litellm.integrations.custom_logger import CustomLogger as _CustomLogger
 
@@ -80,6 +102,11 @@ try:
             super().__init__()
             self._trace_url: str = os.environ.get("TAOS_TRACE_URL", "http://127.0.0.1:6969/api/trace")
             self._notify_url: str = self._trace_url.replace("/api/trace", "/api/lifecycle/notify")
+            # Bean-1 inference receipts (hash-only) — same controller, same
+            # local-token transport as the trace/notify posts above.
+            self._receipts_url_tmpl: str = self._trace_url.replace(
+                "/api/trace", "/api/agents/{slug}/inference-receipts"
+            )
 
         async def _post(self, url: str, payload: dict) -> None:
             """Fire-and-forget POST; never raises into the caller."""
@@ -180,6 +207,53 @@ try:
             slug = _slug_from_alias(key_alias)
             return slug, str(kwargs.get("model") or "")
 
+        async def _emit_inference_receipt(
+            self,
+            slug: str,
+            model: str,
+            kwargs: dict,
+            response_obj: Any,
+            start_time: Any,
+            end_time: Any,
+            tokens_in: int | None,
+            tokens_out: int | None,
+            status: str,
+        ) -> None:
+            """Bean-1: post a hash-only inference receipt to the controller.
+
+            Manifest mode — sha256 digests + metadata only, never message or
+            response text (docs/design/silicon-bean-integration.md). Fail-open:
+            any exception is caught and logged so receipt emission can never
+            break the inference path. Skipped for the unknown-slug sentinel
+            (a receipt must attribute to a real bean).
+            """
+            try:
+                if not slug or slug == _UNKNOWN_SLUG:
+                    return
+                prompt_hash = _prompt_hash(kwargs.get("messages") or [])
+                output_text = self._extract_response_text(response_obj) if status == "success" else ""
+                started_at = completed_at = None
+                try:
+                    if start_time is not None:
+                        started_at = start_time.isoformat()
+                    if end_time is not None:
+                        completed_at = end_time.isoformat()
+                except Exception:
+                    pass
+                await self._post(self._receipts_url_tmpl.format(slug=slug), {
+                    "trace_id": str(kwargs.get("litellm_call_id") or "") or None,
+                    "model_id": model,
+                    "prompt_hash": prompt_hash,
+                    "output_hash": _output_hash(output_text),
+                    "prompt_tokens": tokens_in,
+                    "completion_tokens": tokens_out,
+                    "started_at": started_at,
+                    "completed_at": completed_at,
+                    "status": status,
+                })
+            except Exception as exc:
+                logger.warning("litellm_callback: inference receipt emission failed: %s", exc)
+
         def _record_spend(self, agent: str, cost_usd: float) -> None:
             """Best-effort spend increment; never raises into the caller."""
             path = os.environ.get("TAOS_AGENT_BUDGETS")
@@ -225,6 +299,10 @@ try:
                     await self._post(self._notify_url, {"backend_name": backend_name})
                 if cost_usd and cost_usd > 0 and slug:
                     self._record_spend(slug, cost_usd)
+                await self._emit_inference_receipt(
+                    slug, model, kwargs, response_obj, start_time, end_time,
+                    tokens_in, tokens_out, "success",
+                )
             except Exception as exc:
                 logger.warning("litellm_callback: success handler error: %s", exc)
 
@@ -258,6 +336,10 @@ try:
                     "error": error_msg,
                     "payload": payload,
                 })
+                await self._emit_inference_receipt(
+                    slug, model, kwargs, None, start_time, end_time,
+                    None, None, "error",
+                )
             except Exception as exc:
                 logger.warning("litellm_callback: failure handler error: %s", exc)
 

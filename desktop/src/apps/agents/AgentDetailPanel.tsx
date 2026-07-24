@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Bot, Box, ScrollText, X, Wrench, MessageSquare, Archive, Terminal, ExternalLink, Stethoscope, Play, Zap } from "lucide-react";
+import { Bot, Box, Fingerprint, ScrollText, X, Wrench, MessageSquare, Archive, Terminal, ExternalLink, Stethoscope, Play, Zap } from "lucide-react";
 import { AgentSkillsPanel } from "../AgentSkillsPanel";
 import { AgentMessagesPanel } from "../AgentMessagesPanel";
 import { AgentTracesPanel } from "./AgentTracesPanel";
+import { AgentProvenancePanel } from "./AgentProvenancePanel";
 import { PersonaTab } from "@/components/agent-settings/PersonaTab";
 import { MemoryTab } from "@/components/agent-settings/MemoryTab";
 import { FrameworkTab } from "@/components/agent-settings/FrameworkTab";
@@ -29,7 +30,7 @@ const SHORTCUT_ICON: Record<ShortcutIcon, React.ComponentType<{ size?: number }>
 /*  AgentDetailPanel (Logs + Skills tabs)                              */
 /* ------------------------------------------------------------------ */
 
-export type DetailTab = "logs" | "traces" | "persona" | "memory" | "framework" | "skills" | "messages" | "shortcuts";
+export type DetailTab = "logs" | "traces" | "persona" | "memory" | "framework" | "skills" | "messages" | "provenance" | "shortcuts";
 
 export function AgentDetailPanel({
   agent,
@@ -154,6 +155,10 @@ export function AgentDetailPanel({
               <MessageSquare size={13} className="mr-1.5" />
               Messages
             </TabsTrigger>
+            <TabsTrigger value="provenance">
+              <Fingerprint size={13} className="mr-1.5" />
+              Provenance
+            </TabsTrigger>
             <TabsTrigger value="shortcuts">
               <Terminal size={13} className="mr-1.5" />
               Shortcuts
@@ -199,6 +204,9 @@ export function AgentDetailPanel({
         </TabsContent>
         <TabsContent value="messages" className="h-full mt-0">
           <AgentMessagesPanel agentName={agent.name} />
+        </TabsContent>
+        <TabsContent value="provenance" className="h-full mt-0">
+          <AgentProvenancePanel agentName={agent.name} />
         </TabsContent>
         <TabsContent value="shortcuts" className="h-full mt-0 overflow-auto">
           <div className="p-4 flex flex-col gap-4">
