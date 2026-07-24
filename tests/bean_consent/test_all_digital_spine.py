@@ -44,6 +44,28 @@ class TestSubjectKeys:
             bean_subject.subject_key("app", "")
 
 
+class TestSubjectValidation:
+    def test_bare_agent_slug_valid(self):
+        assert bean_subject.is_valid_subject("scout-1")
+        assert bean_subject.is_valid_subject("agent_42.v2")
+
+    def test_app_subject_key_valid(self):
+        assert bean_subject.is_valid_subject("app:open-cowork")
+        assert bean_subject.is_valid_subject("app:com.acme.notes")
+
+    def test_path_traversal_and_separators_rejected(self):
+        assert not bean_subject.is_valid_subject("../etc")
+        assert not bean_subject.is_valid_subject("app:../x")
+        assert not bean_subject.is_valid_subject("a/b")
+        assert not bean_subject.is_valid_subject("app:a/b")
+        assert not bean_subject.is_valid_subject("")
+
+    def test_bad_kind_or_ident_rejected(self):
+        assert not bean_subject.is_valid_subject("app:")     # empty ident
+        assert not bean_subject.is_valid_subject(":x")       # empty kind
+        assert not bean_subject.is_valid_subject("app: x")   # space
+
+
 class TestGatedConsentCheck:
     def test_non_gated_scope_always_allowed(self):
         allowed, reason = gated_consent_check(

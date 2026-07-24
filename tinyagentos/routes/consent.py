@@ -15,7 +15,6 @@ when merging (see docs/design/bean-2-5-plan.md "Delegation rules").
 
 from __future__ import annotations
 
-import re
 from pathlib import Path
 
 from fastapi import APIRouter, Depends, Request
@@ -24,17 +23,18 @@ from pydantic import BaseModel
 
 from tinyagentos.auth_context import CurrentUser, current_user
 from tinyagentos.bean_consent import FLAGGED_SCOPES
+from tinyagentos.bean_subject import is_valid_subject
 
 router = APIRouter()
 
-# Same slug shape as routes/inference_receipts.py / routes/provenance.py:
-# the agent name is used as a stored value (and, for other Bean stores, a
-# path component), so keep it to one safe segment.
-_SLUG_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
-
 
 def _valid_slug(name: str) -> bool:
-    return bool(_SLUG_RE.match(name)) and ".." not in name
+    # The consent ledger is the all-digital substrate
+    # (docs/design/silicon-bean-all-digital.md): its subject may be a bare
+    # agent slug (Bean-3) OR a "kind:ident" subject key (app:open-cowork), so
+    # accept both safe shapes. The consent name is only ever a stored DB
+    # value here (not a path component), so the subject-key colon is safe.
+    return is_valid_subject(name)
 
 
 async def _get_store(request: Request):

@@ -19,10 +19,16 @@ prefix) in ``bean_consent.agent_slug``. ``subject_key`` is therefore opt-in
 mix agents and apps in one ledger adopt the prefixed keys.
 """
 
+import re
+
 AGENT = "agent"
 APP = "app"
 
 _SEP = ":"
+
+# A single path/DB-safe token: the Bean-3 agent-slug shape. Reused for both
+# the kind and the ident of a subject key.
+_TOKEN_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
 
 
 def subject_key(kind: str, ident: str) -> str:
@@ -57,3 +63,20 @@ def parse_subject(key: str) -> tuple[str, str]:
 def is_kind(key: str, kind: str) -> bool:
     """True iff *key* names a subject of *kind*."""
     return parse_subject(key)[0] == (kind or "").strip().lower()
+
+
+def is_valid_subject(key: str) -> bool:
+    """True iff *key* is a safe consent/ledger subject.
+
+    Accepts either a bare agent slug (Bean-3 legacy — ``scout-1``) or a
+    ``kind:ident`` subject key (``app:open-cowork``) where both halves are
+    slug-safe tokens. Rejects path-traversal and separators so a subject key
+    is safe to use as a DB key or path segment. This is the widened rule the
+    consent routes use so app subjects are first-class, not just agents.
+    """
+    if not key or ".." in key or "/" in key or "\\" in key:
+        return False
+    if _SEP in key:
+        kind, ident = key.split(_SEP, 1)
+        return bool(_TOKEN_RE.match(kind)) and bool(_TOKEN_RE.match(ident))
+    return bool(_TOKEN_RE.match(key))

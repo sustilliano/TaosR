@@ -108,10 +108,37 @@ class TestConsentRoutes:
         assert resp.status_code == 400
 
     async def test_invalid_agent_slug_400(self, client):
-        # Leading '.' fails _SLUG_RE (must start alnum) -> 400, not a 404
-        # from path-routing weirdness.
+        # Leading '.' fails the subject rule (must start alnum) -> 400, not a
+        # 404 from path-routing weirdness.
         resp = await client.get("/api/agents/..bad/consent")
         assert resp.status_code == 400
+
+    async def test_app_subject_key_is_first_class(self, client):
+        # All-digital substrate: an app subject (kind:ident) grants/lists on
+        # the same ledger as an agent (docs/design/silicon-bean-all-digital.md).
+        subject = "app:open-cowork"
+        resp = await client.post(
+            f"/api/agents/{subject}/consent/grant",
+            json={"scope": "app.net", "granted_by": "operator"},
+        )
+        assert resp.status_code == 200, resp.text
+        assert resp.json()["grant"]["scope"] == "app.net"
+
+        resp = await client.get(f"/api/agents/{subject}/consent")
+        assert resp.status_code == 200
+        scopes = [g["scope"] for g in resp.json()["grants"]]
+        assert "app.net" in scopes
+
+        # revoke takes effect immediately
+        resp = await client.post(
+            f"/api/agents/{subject}/consent/revoke", json={"scope": "app.net"}
+        )
+        assert resp.status_code == 200
+
+    async def test_path_traversal_subject_rejected(self):
+        # A colon is allowed (subject key) but '..' / '/' are not.
+        from tinyagentos.bean_subject import is_valid_subject
+        assert not is_valid_subject("app:../escape")
 
     async def test_unauthenticated_401(self, tmp_path):
         app = _make_app(tmp_path, authenticated=False)
